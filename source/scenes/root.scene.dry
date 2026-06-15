@@ -41,6 +41,7 @@ Q.resources = 2;
 Q.dues = 1;
 Q.comintern_funding = 2;
 Q.comintern_relation = 2;
+Q.kpd_votes = 8;
 
 // the state of the party
 // overall dissent reduces every increase in party support.

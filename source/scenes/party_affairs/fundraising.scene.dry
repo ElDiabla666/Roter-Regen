@@ -30,6 +30,7 @@ on-arrival: resources += resource_gain
 We have collected our finances.
 
 @change_dues
+subtitle: Our current dues provide us with [+ dues +] resources. We could change them.
 view-if: dues_set != 1
 on-arrival: dues_set = 1
 
@@ -62,6 +63,7 @@ Our members grumble at this, and some of the less committed members leave. But n
 [? if unemployed >= 15 : Because of the presently high unemployment, our members are feeling the extra burden hard. ?]
 
 @change_moscow
+subtitle: Our current financial arrangements with Moscow provide us with [+ comintern_funding +]. We could change them.
 view-if: moscow_set != 1
 on-arrival: moscow_set = 1
 
@@ -85,7 +87,7 @@ The Communist International is pleasantly surprised, and have agreed to allocate
 
 @increase_moscow
 subtitle: Comintern financing would provide us [+ comintern_funding + 1 +] if we increased it. [? if comintern_relation <= comintern_funding : The Comintern isn't willing to finance us further. ?]
-choose-if: comintern_funding <= comintern_relation
+choose-if: comintern_relation > comintern_funding
 on-arrival: comintern_funding += 1; resource_gain += 1; comintern_relation -= 1
 view-if: comintern_funding <= 4
 go-to: financial_situation
