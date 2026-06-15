@@ -38,7 +38,9 @@ Q.use_decimals = 0;
 // party resources
 Q.resources = 2;
 // party dues
-Q.dues = 2;
+Q.dues = 1;
+Q.comintern_funding = 2;
+Q.comintern_relation = 2;
 
 // the state of the party
 // overall dissent reduces every increase in party support.
@@ -715,7 +717,7 @@ For more information on the politics and government of the German Republic, see 
 - @1925_historical: Begin (historical mode)
 
 @1925_easy
-on-arrival: difficulty = -1; resources = 4; dues = 3; rfb_militancy += 0.1; spd_relation += 10; z_relation += 10
+on-arrival: difficulty = -1; resources = 4; dues = 2; rfb_militancy += 0.1; spd_relation += 10; z_relation += 10
 go-to: 1925_main
 
 @1925_hard

@@ -1,39 +1,93 @@
 title: Fundraising
 new-page: true
-view-if: fundraising_timer <= 0 and (not historical_mode)
-on-arrival: fundraising_timer = 6; month_actions += 1
+view-if: fundraising_timer <= 0
+on-arrival: fundraising_timer = 6; month_actions += 1; dues_set = 0; moscow_set = 0; {!
+Q.support_multiplier = Q.kpd_votes/5;
+Q.resource_gain = Q.dues+(Q.dues-(Q.dues/Q.support_multiplier));
+Q.resource_gain = Math.floor(Q.resource_gain);
+Q.resource_gain += Q.comintern_funding;
+!}
 frequency: 300
 is-card: true
+go-to: financial_situation
 card-image: img/3_poster.png
 tags: party_affairs
 
 = Fundraising
 
-For better or for worse, the party cannot exist without money.
+For better or for worse, the party cannot exist without money. We have several avenues of funding, primarily our dues[? if comintern_membership : and our relationship with Moscow?].
+
+@financial_situation
+
+- @change_dues: Let's change our dues.
+- @change_moscow: Let's change our Comintern funding.
+- @collect: We will collect our finances.
+
+@collect
+subtitle: [+ resource_gain +] resources gained.
+on-arrival: resources += resource_gain
+
+We have collected our finances.
+
+@change_dues
+view-if: dues_set != 1
+on-arrival: dues_set = 1
 
 - @maintain: Maintain our current dues.
 - @reduce: Reduce dues.
 - @increase: Increase dues.
 
 @maintain
-subtitle: [+ dues +] resources gained.
-on-arrival: resources += dues;
+subtitle: Our dues provide us [+ dues +] resources. We don't have to change our dues, actually.
+go-to: financial_situation
 
 We maintain our current dues.
 
 @reduce
-subtitle: [+ dues - 1 +] resources gained.
+subtitle: Our dues would provide us [+ dues - 1 +] if we reduced them.
 choose-if: dues > 1
-on-arrival: dues -= 1; resources += dues; left_dissent -= 8; center_dissent -= 8; reformist_dissent -= 8; labor_dissent -= 8
+on-arrival: dues -= 1; resource_gain -= 1; left_dissent -= 8; center_dissent -= 8; reformist_dissent -= 8; labor_dissent -= 8
+go-to: financial_situation
 
 Our current members appreciate this, but no one decides to join a party because of the low dues.
 
 @increase
-subtitle: [+ dues + 1 +] resources gained. [? if unemployed >= 15 : Given the present economic situation, this may be painful. ?][? if dues >= 4 : Dues are already rather high; increasing them might reduce our membership. ?]
-on-arrival: dues += 1; resources += dues; workers_spd -= 3; unemployed_spd -= 3; workers_spd -= 10 if unemployed >= 15; unemployed_spd -= 10 if unemployed >= 15; workers_spd -= 3*dues if dues >= 5; unemployed_spd -= 3*dues if dues >= 5
+subtitle: Our dues would provide us [+ dues + 1 +] if we increased them. [? if unemployed >= 15 : Given the present economic situation, this may be painful. ?][? if dues >= 4 : Dues are already rather high; increasing them might reduce our membership. ?]
+on-arrival: dues += 1; resource_gain += 1; workers_kpd -= 3; unemployed_kpd -= 3; workers_kpd -= 10 if unemployed >= 15; unemployed_kpd -= 10 if unemployed >= 15; workers_kpd -= 3*dues if dues >= 5; unemployed_kpd -= 3*dues if dues >= 5
 view-if: dues <= 4
+go-to: financial_situation
 
 Our members grumble at this, and some of the less committed members leave. But now, we have access to additional resources. 
 
 [? if unemployed >= 15 : Because of the presently high unemployment, our members are feeling the extra burden hard. ?]
 
+@change_moscow
+view-if: moscow_set != 1
+on-arrival: moscow_set = 1
+
+- @maintain_moscow: Maintain our current Comintern funding.
+- @reduce_moscow: We will inform the Comintern that we can do with reduced funding.
+- @increase_moscow: We will request more funding from the Comintern.
+
+@maintain_moscow
+subtitle: Comintern financing provides us [+ comintern_funding +] resources. We don't have to change this, actually.
+go-to: financial_situation
+
+We maintain our current level of Comintern financing.
+
+@reduce
+subtitle: Comintern financing would provide us [+ comintern_funding - 1 +] if we reduced them.
+choose-if: comintern_funding > 1
+on-arrival: comintern_funding -= 1; comintern_relation += 1; resource_gain -= 1
+go-to: financial_situation
+
+The Communist International is pleasantly surprised, and have agreed to allocate us less funding, sparing them more resources for their other endeavours and hopefully fostering good will from them.
+
+@increase
+subtitle: Comintern financing would provide us [+ comintern_funding + 1 +] if we increased it. [? if comintern_relation <= comintern_funding : The Comintern isn't willing to finance us further. ?]
+choose-if: comintern_funding <= comintern_relation
+on-arrival: comintern_funding += 1; resource_gain += 1; comintern_relation -= 1
+view-if: comintern_funding <= 4
+go-to: financial_situation
+
+The Comintern grumbles at this, but trusts us enough to provide our requests.
