@@ -21,7 +21,7 @@ For better or for worse, the party cannot exist without money. We have several a
 
 - @change_dues: Let's change our dues.
 - @change_moscow: Let's change our Comintern funding.
-- @collect: We will collect our finances.
+- @collect: We will collect the funds available to us, with no further modifications to our finances.
 
 @collect
 subtitle: [+ resource_gain +] resources gained.
