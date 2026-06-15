@@ -6,18 +6,18 @@ view-if: reichsbanner_timer <= 0
 card-image: img/reichsbanner.jpg
 on-arrival: month_actions += 1; reichsbanner_timer += 6; rb_militarization_cost = 2 if rb_militancy > 0.1 else rb_militarization_cost = 1; rb_militarization_cost = 3 if rb_militancy > 0.25
 max-visits: 6
-#subtitle: Paramilitary organizing in defense of the republic.
+#subtitle: Paramilitary organizing in defense of the revolution.
 
 = Reichsbanner
 
-The *Reichsbanner Schwarz-Rot-Gold* is a mass organization for the defense of the Republic against the extremists who threaten it. Some would call it a paramilitary, although currently it is hardly any sort of military. It is officially associated with the pro-democratic parties -the SPD, Center, and [+ ddp_name +], but by far the largest component is with the SPD.
+The *RoteRoter Frontkämpferbund* is a mass organisation to defend the Communists against state repression and strengthen us for revolution! It is against the Republicans, but more importantly the reactionaries who threaten us! 
 
 [? if workers_spd < 46 or workers_spd < workers_nsdap or workers_spd < workers_kpd : The Reichsbanner is having a more difficult time recruiting, as the SPD is no longer the dominant party among the workers. Many of its members have left. ?]
 
-- @militant: Fund more military-style training and equipment for the Reichsbanner.
-- @militant_2: Use our existing resources to support more training for the Reichsbanner.
+- @militant: Fund more military-style training and equipment for the Roter Frontkämpferbund.
+- @militant_2: Use our existing resources to support more training for the Roter Frontkämpferbund.
 - @same: Keep the Reichsbanner as it is.
-- @cut_rb: Cut funding for the Reichsbanner.
+- @cut_rb: Cut funding for the Roter Frontkämpferbund.
 - @women_rb
 - @easy_discard
 - @cancel_advisor_action
