@@ -225,7 +225,7 @@ Current relations: [+ dnvp_relation : relationships +]
 
 **KPD** - *Kommunistische Partei Deutschlands* (German Communist Party) - a radical left-wing offshoot of the SPD that emerged in the aftermath of the German Revolution of 1918, they follow the path of Moscow, opposing parliamentary democracy in favor of a Soviet-style revolution.
 
-Current relations: [+ kpd_relation : relationships +]
+Current relations: [+ spd_relation : relationships +]
 
 [? if sapd_formed: SAPD - Sozialistische Arbeiterpartei Deutschlands (Socialist Worker's Party of Germany) - a party recently formed in a split from the SPD, the SAPD is essentially an agglomeration of various left-wing splinter groups between the SPD and KPD. ?]
 

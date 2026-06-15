@@ -4,7 +4,7 @@ view-if: year == 1925 and month >= 9
 max-visits: 1
 tags: event
 new-page: true
-on-arrival: kpd_party_leader = "Thälmann"; kpd_relation += 5
+on-arrival: kpd_party_leader = "Thälmann"; spd_relation += 5
 
 = The KPD's New Leader
 

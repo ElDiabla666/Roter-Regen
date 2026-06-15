@@ -31,7 +31,7 @@ Max Seydewitz of the left meanwhile has proposed before the conference what woul
 
 @seydewitz
 view-if: spd_relation >= 50
-on-arrival: left_strength += 20; reformist_strength -= 10; reformist_dissent += 25; center_dissent += 10; labor_dissent += ((z_relation+dvp_relation)/10); marx_relation -= 10; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 15; kpd_relation += 10; communist_coalition += 1
+on-arrival: left_strength += 20; reformist_strength -= 10; reformist_dissent += 25; center_dissent += 10; labor_dissent += ((z_relation+dvp_relation)/10); marx_relation -= 10; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 15; spd_relation += 10; communist_coalition += 1
 #go-to: saxon_struggle
 
 Surprisingly, the motion to reject cooperation with the bourgeoisie is passed through the conference. The party's right wing is incensed by this decision, with some even threatening revolt.
