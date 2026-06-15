@@ -75,7 +75,7 @@ go-to: financial_situation
 
 We maintain our current level of Comintern financing.
 
-@reduce
+@reduce_moscow
 subtitle: Comintern financing would provide us [+ comintern_funding - 1 +] if we reduced them.
 choose-if: comintern_funding > 1
 on-arrival: comintern_funding -= 1; comintern_relation += 1; resource_gain -= 1
@@ -83,7 +83,7 @@ go-to: financial_situation
 
 The Communist International is pleasantly surprised, and have agreed to allocate us less funding, sparing them more resources for their other endeavours and hopefully fostering good will from them.
 
-@increase
+@increase_moscow
 subtitle: Comintern financing would provide us [+ comintern_funding + 1 +] if we increased it. [? if comintern_relation <= comintern_funding : The Comintern isn't willing to finance us further. ?]
 choose-if: comintern_funding <= comintern_relation
 on-arrival: comintern_funding += 1; resource_gain += 1; comintern_relation -= 1
