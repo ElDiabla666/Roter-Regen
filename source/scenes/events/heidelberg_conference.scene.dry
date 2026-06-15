@@ -1,0 +1,47 @@
+title: Heidelberg Conference
+subtitle: The SPD holds a party conference in Heidelberg
+new-page: true
+tags: event
+view-if: year == 1925 and month >= 9
+max-visits: 1
+
+# the low priority means that this event is only seen after all other events are resolved for the month.
+# note: z_coalition = z_celation + (pro_cepublic/2); z_coalition *= 1.25 if z_faction_leader == "Joos";
+
+= Heidelberg Conference
+
+The SPD is holding its biannual conference in the city of Heidelberg, the burial place of the recently deceased Friedrich Ebert. Among the priorities on the agenda is the drafting of a new party program to replace the Görlitz program, which is seen by many as deviating too far from Marxism and as a result costing the SPD amongst the working class.
+
+Another issue is that of Saxony, where the regional party organization has split nearly in half over Max Heldt's decision to govern with the DVP.
+
+- @heidelberg: The party adopts the Heidelberg program.
+
+@heidelberg
+on-arrival: heidelberg_program = 1; center_strength += 5; reformist_strength -= 5; left_dissent -= 5; center_dissent -= 10; reformist_dissent += 5; dvp_relation -= 5; spd_relation += 5
+go-to: coalition_issue
+
+The party has adopted the Heidelberg program, written by Karl Kautsky of the party center and representing a return towards the party's Marxist roots. 
+
+@coalition_issue
+
+Max Seydewitz of the left meanwhile has proposed before the conference what would amount to a rejection of coalitions with the bourgeois parties in order to represent the interests of the proletariat in all future struggles without regard to their opinions.
+
+- @seydewitz: The motion is passed by the conference.
+- @silly: The motion is defeated by the conference.
+
+@seydewitz
+view-if: spd_relation >= 50
+on-arrival: left_strength += 20; reformist_strength -= 10; reformist_dissent += 25; center_dissent += 10; labor_dissent += ((z_relation+dvp_relation)/10); marx_relation -= 10; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 15; kpd_relation += 10; communist_coalition += 1
+#go-to: saxon_struggle
+
+Surprisingly, the motion to reject cooperation with the bourgeoisie is passed through the conference. The party's right wing is incensed by this decision, with some even threatening revolt.
+
+@silly
+on-arrival: reformist_dissent -= 5; left_dissent += 5
+#go-to: saxon_struggle
+
+As expected, the motion is defeated. The party remains too attached to the Weimar Coalition for such a move to be feasible.
+
+@saxon_struggle
+
+Finally, the last main issue for the conference is what should be done about Saxony, where the SPD has essentially split in half following the decision of Max Heldt to govern with the DVP despite the local party chapter's express refusal.
