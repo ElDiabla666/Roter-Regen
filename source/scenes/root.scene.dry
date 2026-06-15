@@ -743,7 +743,7 @@ this.state.disableSaves = true;
 go-to: 1925_main
 
 @1925_main
-audio: shuffle main/out/html/music/TowardsTheDawn.mp3 main/out/html/music/DasBannerVonMarxUndLenin.mp3 main/out/html/music/OctoberSong.mp3 main/out/html/music/RoterWedding.mp3 main/out/html/music/LiedderWerktatigen.mp3 main/out/html/music/Socialistische Weltrepublik.mp3 main/out/html/music/AufAufZumKampf.mp3 main/out/html/music/Einheitsfrontlied.mp3 main/out/html/music/Warszawianka
+audio: shuffle out/html/music/TowardsTheDawn.mp3 out/html/music/DasBannerVonMarxUndLenin.mp3 out/html/music/OctoberSong.mp3 out/html/music/RoterWedding.mp3 out/html/music/LiedderWerktatigen.mp3 out/html/music/SocialistischeWeltrepublik.mp3 out/html/music/AufAufZumKampf.mp3 out/html/music/Einheitsfrontlied.mp3 out/html/music/Warszawianka.mp3
 new-page: true
 go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
