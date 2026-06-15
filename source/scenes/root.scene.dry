@@ -43,6 +43,8 @@ Q.comintern_funding = 2;
 Q.comintern_relation = 2;
 Q.comintern_membership = 1;
 Q.kpd_votes = 8;
+Q.comintern_line = 2;
+// 1 = offensive theory, 2 = united fronts, 3 = popular fronts
 
 // the state of the party
 // overall dissent reduces every increase in party support.
