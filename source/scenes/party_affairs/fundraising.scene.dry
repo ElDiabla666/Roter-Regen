@@ -1,7 +1,7 @@
 title: Fundraising
 new-page: true
 view-if: fundraising_timer <= 0
-on-arrival: fundraising_timer = 6; month_actions += 1; dues_set = 0; moscow_set = 0; {!
+on-arrival: fundraising_timer = 6; fundraising_timer += resource_gain; month_actions += 1; dues_set = 0; moscow_set = 0; {!
 Q.support_multiplier = Q.kpd_votes/5;
 Q.resource_gain = Q.dues+(Q.dues-(Q.dues/Q.support_multiplier));
 Q.resource_gain = Math.floor(Q.resource_gain);
