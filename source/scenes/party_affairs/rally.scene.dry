@@ -12,7 +12,7 @@ go-to: main_rally; sa_disrupt if sa_strength > 100 and not sa_banned and not ret
 The Nazi SA has disrupted our rally! Their street troops are preventing us from meeting.
 
 #- @police_protect: Call the police to protect our rally.
-- @rb_protect: Use the Reichsbanner to protect our rally.
+- @rfb_protect: Use the Reichsbanner to protect our rally.
 #- @both_protect: The police and Reichsbanner should work together to protect our rally.
 - @cancel: Cancel the rally.
 
@@ -33,14 +33,14 @@ Unfortunately, the police were unable or unwilling to hold back the SA mob. The 
 
 @rfb_protect
 on-arrival: rfb_success = rfb_strength*rfb_militancy - sa_strength*sa_militancy; strife += 1
-go-to: rb_protect_win if rb_success >= 0; rb_protect_lose if rb_success < 0
+go-to: rfb_protect_win if rb_success >= 0; rfb_protect_lose if rb_success < 0
 
 @rfb_protect_win
 go-to: main_rally
 
 The RFB has successfully protected our rally against the SA! Our meeting can go ahead as usual.
 
-@rb_protect_lose
+@rfb_protect_lose
 on-arrival: workers_nsdap += 3; rfb_strength -= 10
 
 Unfortunately, the RFB was not able to hold back the SA mob. The Nazis have won this show of strength.
