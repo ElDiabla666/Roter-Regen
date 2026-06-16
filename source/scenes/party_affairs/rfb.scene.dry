@@ -120,7 +120,7 @@ By maintaining the RFB, we allow it to reach its full potential, at least within
 
 @default
 subtitle: The RFB may fall into disrepair with such neglect...
-on-arrival: defaults += 1; rfb_strength *= (0.9+(recruitment_priority/10));; rfb_militancy *= (0.9+(militancy_priority/10)); rfb_strength -= rfb_strength*(0.05*defaults); rfb_militancy -= rfb_militancy*(0.05*defaults)
+on-arrival: defaults += 1; rfb_strength *= (0.9+(recruitment_priority/10)); rfb_militancy *= (0.9+(militancy_priority/10)); rfb_strength -= rfb_strength*(0.05*defaults); rfb_militancy -= rfb_militancy*(0.05*defaults)
 
 The RFB will go without funding this cycle. This is not good.
 
