@@ -1,0 +1,80 @@
+title: Crisis in the Party
+subtitle: The central committee has convened to enact the Comintern's wishes 
+view-if: year == 1925 and month >= 11 and fischer_rogue
+max-visits: 1
+tags: event
+new-page: true
+
+= Crisis in the Party
+
+Following Ruth Fischer's refusal to travel to Moscow, the Comintern was forced to reckon with more confrontational means of dealing with ultraleftist defiance in the KPD. Upon, what we can only assume to be, the Comintern's instruction, then, factions of the party bureaucracy loyal to the Comintern have convened to discuss the situation.
+
+- @coup: The committee votes to remove Ruth Fischer.
+- @loyalists: The convention collapses to squabbling.
+
+@coup
+view-if: center_strength*((comintern_funding+1)/(resource_gain+1)) >= left_strength
+on-arrival: left_dissent += 50; left_strength -= 25; center_strength += 15; right_strength += 5; kpd_party_leader = "Thälmann"; comintern_relation += 4; left_split = 1; workers_kpd -= 3; unemployed_kpd -= 3
+
+Ruth Fischer, having lost the support of both the Comintern and the party bureaucracy, has been removed from leadership, and is shortly thereafter expelled from the party, going on to form a dissident "Leninbund".
+
+In the following days, the party denounces her and Maslow as ultraleftist deviationists, and reaffirms the United Front line of the Comintern. Let's hope this fiasco does not damage us too significantly.
+
+@loyalists
+view-if: center_strength*((comintern_funding+1)/(resource_gain+1)) < left_strength
+on-arrival: comintern_membership = 0; comintern_funding = 0; comintern_relation -= 10; comintern_line = "Irrelevant"; {! 
+Q.kpd_split = 1;
+Q.parties.push('kpd2');
+
+Q.workers_kpd2 = (Q.workers_kpd*((Q.comintern_funding+1)/(Q.resource_gain+1)));
+Q.new_middle_kpd2 = Q.new_middle_kpd;
+Q.old_middle_kpd2 = 0;
+Q.rural_kpd2 = 0;
+Q.catholics_kpd2 = 0;
+Q.unemployed_kpd2 = (Q.workers_kpd*((Q.comintern_funding+1)/(Q.resource_gain+1)));
+Q.bourgeoisie_kpd2 = 0;
+
+Q.workers_kpd -= Q.workers_kpd2;
+Q.new_middle_kpd = 0;
+Q.unemployed_kpd -= Q.unemployed_kpd2;
+
+// update all records
+Q.kpd2_r = Math.floor(Q.kpd_r*(Q.center_strength/100));
+Q.kpd_r -= Q.kpd2_r;
+Q.old_kpd2_r = 0;
+for (var record of Q.election_records) {
+    record['kpd2'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['kpd2'] = 0;
+}
+!}
+
+In the ensuing convention, the Comintern loyalists fail to muster a majority for the removal of Ruth Fischer. They appeal to the Executive Committee of the Communist International, which rules in their favor and expels Fischer and Maslow, as well as the entire ultraleft group, from the party.
+
+- @we_are_the_party: They can't do that - *we* are the party!
+
+@we_are_the_party
+
+The ensuing split consumes most of our organizations. KPD chapters are forced to choose which party of the two both claiming to represent the KPD they side with, as well as all party organs. By the end of it, Germany now has two parties both claiming to be the Communist Party of Germany.
+
+With the propagation of now two communist party claimants in Germany, both claiming the mantle of one true communist party, we must unfortunately find some way to distinguish ourselves from the frauds of the Comintern in our agitation work. How should we do so?
+
+- @independence: While they are slaves to Moscow, we are the independent communist party!
+- @majority: We held the majority of delegates in the meeting of the central committee - we are the majority communist party!
+- @left: We uphold the left-opposition to the right deviationism peddled by Msocow - we are the left communist party!
+
+@independence
+on-arrival: kpd_name = "KPD(U)"
+
+While they distinguish themselves on the basis of sectionhood in the Communist International, we, then, will cherish our independence!
+
+@majority
+on-arrival: kpd_name = "KPD(M)"
+
+While they had to appeal to Moscow to extract their basis, we had the majority of the German delegates, and ergo represent the majority of the German workers!
+
+@left
+on-arrival: kpd_name = "KPD(L)"
+
+While they represent Moscow's right-deviationism, we represent the authentic left opposition, and defend Germany from opportunist takeover of the movement!

@@ -539,11 +539,14 @@ table {
 /* Styles for parties */
 .seat.kpd {
     fill: #8B0000;
+    stroke: var(--border-color);
+    stroke-width: 1.5px;
+}
+.seat.kpd2 {
+    fill: #8B0000;
 }
 .seat.spd {
     fill: #E3000F;
-    stroke: var(--border-color);
-    stroke-width: 1.5px;
 }
 .seat.ddp {
     fill: #DCCA4A;
