@@ -1,13 +1,36 @@
-title: The KPD's New Leader
-subtitle: The Comintern has turned on Fischer
-view-if: year == 1925 and month >= 9
+title: Moscow Calls
+subtitle: Stalin has summoned for Ruth Fischer.
+view-if: year == 1925 and month >= 9 and comintern_relation < 4 and not dropped_out
 max-visits: 1
 tags: event
 new-page: true
-on-arrival: kpd_party_leader = "Thälmann"; spd_relation += 5
 
-= The KPD's New Leader
+= Moscow Calls
 
-With the Comintern viewing Maslov and Fischer as unreliable and ultra-left deviationists, they have organized for their removal from the KPD's leadership. With Fischer called to Moscow to meet with Stalin, only to be kept there and isolated from the rest of the party, Thälmann, the leader of the RFB, has assumed leadership of the party and distanced himself from her, despite previously being part of her and the arrested Maslov's group.
+We have received word from Moscow that Stalin wishes to meet with Ruth Fischer. This comes after we defied the Comintern's order for Ernst Thälmann to drop out in the presidential elections.
 
-We have noticed a mild improvement in relationship with the KPD as Thälmann represents a potential step towards reconciliation between our parties, though for the time being any strategy of the KPD to cooperate with us likely remains in bad faith, seeking to drive a wedge between either us and our base or us and our Weimar partners.
+- @go_to_moscow: Ruth Fischer will travel to Moscow to meet with Stalin.
+- @hell_no: Something is amiss. Ruth Fischer must stay here.
+
+@go_to_moscow
+on-arrival: left_dissent -= 5; left_strength -= 15; center_strength += 10; kpd_party_leader = "Thälmann"; comintern_relation += 1
+
+Upon arrival in Moscow, Ruth Fischer is effectively detained in Hotel Lux, and prevented from returning to Germany, allowing Ernst Thälmann to assume leadership of the party following his distancing himself from Maslow and Fischer.
+
+- @united_front: Reaffirm the united front line, and denounce Fischer and Maslow as ultraleft deviationists.
+- @status_quo: Now, we won't change our policy *that* much...
+
+@united_front
+on-arrival: left_dissent += 10; left_strength -= 5; spd_relation += 5; comintern_relation += 2
+
+We reaffirm now the Comintern line of united fronts, and condemn Fischer and Maslow's deviations from this line as ultraleftist ones. The left is alienated by Thälmann's shift to the right.
+
+@status_quo
+on-arrival: center_dissent += 5; left_strength += 5; comintern_relation -= 1
+
+Just because we have removed two clearly unreliable politicians from power does not mean we must reinvent ourselves. The crux of our strategy remains unchanged.
+
+@hell_no
+on-arrival: comintern_relation -= 3; center_dissent += 5; right_dissent += 5; conciliator_dissent += 5; left_strength -= 5; fischer_rogue = 1
+
+Ruth Fischer's refusal to travel to Moscow is seen as perhaps an even greater defiance from the Comintern than the KPD's decision to allow Thälmann to run in the second round. The decision is alienating even the KPD bureaucracy, and a coup seems imminent - if not already in motion.
