@@ -27,16 +27,23 @@ Q.kpd_split = 1;
 Q.parties.push('kpd2');
 
 Q.workers_kpd2 = (Q.workers_kpd*((Q.comintern_funding+1)/(Q.resource_gain+1)));
+Q.workers_kpd2 += Q.workers_kpd*(Q.center_strength/200);
 Q.new_middle_kpd2 = Q.new_middle_kpd;
 Q.old_middle_kpd2 = 0;
 Q.rural_kpd2 = 0;
 Q.catholics_kpd2 = 0;
 Q.unemployed_kpd2 = (Q.workers_kpd*((Q.comintern_funding+1)/(Q.resource_gain+1)));
+Q.unemployed_kpd2 += Q.unemployed_kpd*(Q.center_strength/200);
 Q.bourgeoisie_kpd2 = 0;
 
 Q.workers_kpd -= Q.workers_kpd2;
 Q.new_middle_kpd = 0;
 Q.unemployed_kpd -= Q.unemployed_kpd2;
+
+if (Q.workers_kpd2 < Q.workers_kpd) {
+    Q.workers_kpd -= 5*(1-(Q.nationalism/100));
+    Q.workers_kpd2 += 5*(1-(Q.nationalism/100));
+}
 
 // update all records
 Q.kpd2_r = Math.floor(Q.kpd_r*(Q.center_strength/100));
