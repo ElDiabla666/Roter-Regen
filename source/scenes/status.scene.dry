@@ -164,7 +164,9 @@ SPD: [+ spd_votes +]%
 
 Z + BVP: [+ z_votes +]%
 
-KPD: [+ kpd_votes +]%
+[? if kpd_split : KPD(SKI): [+ kpd2_votes +]% ?]
+
+[+ kpd_name +]: [+ kpd_votes +]%
 
 [? if not ddp_name: DDP?][? if ddp_name != 0 : [+ ddp_name +]?]: [+ ddp_votes +]%
 
