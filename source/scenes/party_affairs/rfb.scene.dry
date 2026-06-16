@@ -69,7 +69,7 @@ We inject a large stipend of resources into the RFB to help it in a one-time rec
 #- Orient reichsbanner towards anti-fascism (only available if we have prioritized anti fascism)
 
 @funding 
-subtitle: We currently pay the RFB [+ rfb_funding +].
+subtitle: We currently pay the RFB [+ rfb_funding +] resources.
 
 We currently pay the [+ rfb_funding +], financing its upkeep and, where it has surplus funds, growth. 
 
