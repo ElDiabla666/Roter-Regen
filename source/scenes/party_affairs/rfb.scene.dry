@@ -59,6 +59,7 @@ go-to: options_rfb
 We have reassessed our priorities, and adjusted our funding.
 
 @drive
+view-if: not drive_performed
 subtitle: -[+ rfb_militarization_cost +] resources.
 choose-if: resources >= rfb_militarization_cost
 on-arrival: resources -= rfb_militarization_cost; rfb_strength += kpd_votes*2*recruitment_priority*(1-(rfb_militancy/5)); rfb_militancy += 0.05*militancy_priority; drive_performed = 1
@@ -79,7 +80,7 @@ We currently pay the [+ rfb_funding +], financing its upkeep and, where it has s
 - @increase: Increase funding.
 
 @reduce
-subtitle: This would mean paying it [+ rfb_funding-1 +] resources.
+subtitle: This would mean paying it [+ rfb_funding - 1 +] resources.
 choose-if: rfb_funding > 0
 unavailable-subtitle: Funding has already been gutted.
 on-arrival: rfb_funding -= 1; funding_set = 1
