@@ -322,7 +322,6 @@ subtitle: -1 resource
 choose-if: resources >= 1
 on-arrival: resources -= 1
 max-visits: 1
-go-to: tc2
 
 We will campaign for Thälmann. But amongst which demographic?
 
