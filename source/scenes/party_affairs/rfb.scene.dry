@@ -78,6 +78,7 @@ We currently pay the [+ rfb_funding +], financing its upkeep and, where it has s
 - @increase: Increase funding.
 
 @reduce
+subtitle: This would mean paying it [+ rfb_funding-1 +] resources.
 choose-if: rfb_funding > 0
 unavailable-subtitle: Funding has already been gutted.
 on-arrival: rfb_funding -= 1; funding_set = 1
@@ -86,6 +87,7 @@ go-to: options_rfb
 We cut funding to the RFB, assessing that our party has other, greater priorities. 
 
 @increase
+subtitle: This would mean paying it [+ rfb_funding+1 +] resources.
 on-arrival: rfb_funding += 1; funding_set = 1
 go-to: options_rfb 
 
@@ -94,7 +96,24 @@ We incrase funding for the RFB, assessing that it is one of our primary prioriti
 @pay
 subtitle: -[+ rfb_funding +] resources. This is needed to maintain the RFB at its current capacity.
 choose-if: resources >= rfb_funding
-on-arrival: resources -= rfb_funding; defaults = 0
+on-arrival: resources -= rfb_funding; defaults = 0; {! 
+
+Q.rfb_capacity = Q.kpd_votes*Q.rfb_funding*5;
+Q.rfb_power = Q.rfb_strength*Q.rfb_militancy;
+
+if (Q.rfb_power < Q.rfb_capacity) {
+    Q.rfb_strength += Q.kpd_votes*Q.rfb_funding*(Q.recruitment_priority-(Q.militancy_priority/2))*(1-(Q.rfb_militancy/2));
+    Q.rfb_militancy += (Q.rfb_funding/100)*Q.militancy_priority;
+    if (Q.recruitment_priority >= Q.militancy_priority) {
+        Q.unemployed_kpd += 5*(Q.recruitment_priority-Q.militancy_priority);
+    }
+}
+if (Q.rfb_power > Q.rfb_capacity) {
+    Q.rfb_strength *= (0.9+(Q.recruitment_priority/10));
+    Q.rfb_militancy *= (0.9+(Q.militancy_priority/10));
+}
+
+!}
 
 By maintaining the RFB, we allow it to reach its full potential, at least within the bounds of the funding we have allocated it.
 
