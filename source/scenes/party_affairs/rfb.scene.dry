@@ -1,4 +1,4 @@
-title: RoteRoter Frontkämpferbund
+title: Roter Frontkämpferbund
 new-page: true
 is-card: true
 tags: party_affairs
@@ -9,9 +9,9 @@ max-visits: 6
 #subtitle: Paramilitary organizing in defense of the revolution.
 go-to: options_rfb
 
-= RoteRoter Frontkämpferbund
+= Roter Frontkämpferbund
 
-The *RoteRoter Frontkämpferbund* is a mass organisation to defend the Communists against state repression and strengthen us for revolution! It is against the Republicans, but more importantly the reactionaries who threaten us! 
+The *Roter Frontkämpferbund* is a mass organisation to defend the Communists against state repression and strengthen us for revolution! It is against the Republicans, but more importantly the reactionaries who threaten us! 
 
 [? if workers_kpd < 5 or workers_kpd < workers_nsdap : The RFB is having a more difficult time recruiting, as the KPD is not yet the dominant party among the workers. Many potential members remain with the Social Democrats or have been lured by the rising fascist promises. ?]
 
