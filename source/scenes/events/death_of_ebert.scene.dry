@@ -143,6 +143,9 @@ if (Q.marx_campaign) {
     if (Q.debug_marx_bonus) {
         Q.marx_votes += Q.debug_marx_bonus;
     }
+    if (!Q.thalmann_campaign) {
+        Q.marx_votes += Q.kpd_normalized-(Q.kpd_normalized*(1-(Q.socialism/100)));
+    }
 }
 if (Q.jarres_campaign) {
     Q.jarres_votes += Q.dvp_normalized;
@@ -267,173 +270,55 @@ As expected, there is no majority in the first round of voting.
 
 Thälmann has landed [+ thalmann_votes_disp +]% of the vote in the first round. [? if thalmann_votes_disp < kpd_r : We have fallen in voteshare since the last Reichstag election, a disappointing sign. ?][? if thalmann_votes_disp >= kpd_r : We have won more votes than at the last Reichstag elections, a promising sign. ?] 
 
-
-
-@braun2_menu
-
-- @convince_ddp: Convince the DDP to back Braun.
-- @convince_z: Convince the Center Party to back Braun.
-- @back_marx: Drop out and endorse Wilhelm Marx as the candidate of the **Volksblock**.
-- @finished_campaign_braun: Let the voting begin...
-
-@convince_ddp
-view-if: braun_campaign
-choose-if: ddp_relation >= 60 or (ddp_relation >= 57 and z_support_braun)
-unavailable-subtitle: The DDP is unwilling to back Otto Braun.
-on-arrival: ddp_support_braun = 1; ddp_support_marx = 0
-max-visits: 1
-go-to: braun2_menu
-
-We have convinced the DDP to endorse Braun!
-
-@convince_z
-view-if: braun_campaign
-choose-if: z_relation >= 55
-unavailable-subtitle: The Center Party is unwilling to back Otto Braun.
-max-visits: 1
-
-The Center Party is willing to be convinced; how do we convince them?
-
-- @resources_z: Front the resources for a joint campaign.
-- @relations_z: Use our relations.
-- @braun2_menu: Nevermind the Center Party.
-
-@resources_z
-subtitle: -1 resource
-choose-if: resources >= 1
-on-arrival: z_relation += 5; resources -= 1; left_dissent += 2; marx_campaign = 0; z_support_braun = 1; bvp_support_hindenburg = 1
-go-to: braun2_menu
-
-With our resources, the Center Party has agreed to back Otto Braun. The Bavarian People's Party however, with about 3% of the vote behind it, has not, and turns to Hindenburg.
-
-@relations_z
-subtitle: We require good relations.
-choose-if: z_relation >= 65
-on-arrival: z_relation -= 5; marx_campaign = 0; z_support_braun = 1; bvp_support_hindenburg = 1
-go-to: braun2_menu
-
-Using our relations to win them over, the Center Party has agreed to back Otto Braun. The Bavarian People's Party however, with about 3% of the vote behind it, has not, and turns to Hindenburg.
-
-@back_marx
-view-if: marx_campaign and not spd_support_marx
-on-arrival: spd_prussia = 1; ddp_support_braun = 0; ddp_support_marx = 1; spd_support_marx = 1; left_dissent += 5; workers_spd -= 1; braun_campaign = 0
-go-to: braun2_menu
-
-We have dropped out and endorsed Wilhelm Marx, who is now the candidate of the **Volksblock**. In return, the Center Party has voted Otto Braun as M-P of Prussia.
-
-@finished_campaign_braun
-go-to: hindenburg_enters
+- @hindenburg_enters: How is the second round shaping up?
 
 @no_hindenburg
 on-arrival: held_campaign = 0; ludendorff_campaign = 0; bvp_support_jarres = 1
-go-to: marx_campaign
 
-As we conclude our own decisions with regards to the presidential campaign, we receive news of the decision of the **Reichsblock**, which seemingly attempted to reach out to Paul von Hindenburg, considered by the right-wing a prestigious war hero, a Field Marshal in the German Empire. Luckily for us, he seems to have turned them down, as the **Reichsblock**, after much grumbling and consideration, has determined to continue backing Jarres.
-
-The BVP, meanwhile, has withdrawn Heinrich Held, while the NSDAP has withdrawn Ludendorff, the former endorsing Jarres and the latter denouncing the elections. 
+todo
 
 @hindenburg_enters
-on-arrival: held_campaign = 0; jarres_campaign = 0; ludendorff_campaign = 0; dvp_support_hindenburg = 1; hindenburg_campaign = 1; bvp_support_hindenburg = 1 if z_relation < 55 and spd_support_marx; bvp_support_marx = 1 if z_relation > 65 or not spd_support_marx; nationalism += 5
-go-to: marx_campaign if spd_support_marx; bc2 if braun_campaign
+on-arrival: held_campaign = 0; spd_support_marx = 1; braun_campaign = 0; jarres_campaign = 0; ludendorff_campaign = 0; dvp_support_hindenburg = 1; hindenburg_campaign = 1; bvp_support_hindenburg = 1 if z_relation < 20 and spd_support_marx; bvp_support_marx = 1 if z_relation > 20 or not spd_support_marx; nationalism += 5
 
-Just as we conclude our own decisions with regards to the presidential campaign, we receive news of the entry of Paul von Hindenburg into the race. Considered by the right-wing a war hero, Paul von Hindenburg was a Field Marshal in the German Empire and managed to win the Battle of Tannenberg against Russia. To us, however, he is a reactionary junker and one of the primary peddlers of the stab-in-the-back myth, the same which recently cost Friedrich Ebert his life. 
+Expectedly, the Weimar establishment consolidates into a **Volksblock** backing Wilhelm Marx. Shortly after, we receive news of the entry of Paul von Hindenburg into the race. Considered by the right-wing a war hero, Paul von Hindenburg was a Field Marshal in the German Empire and managed to win the Battle of Tannenberg against Russia. To us, however, he is a reactionary junker and monarchist.
 
-He has received the backing of the DVP, the DNVP[? if bvp_support_hindenburg :, the BVP?], the NSDAP, and the various minor parties of the center-right. A victory for him could mean the end of democracy as we know it.
+He has received the backing of the DVP, the DNVP[? if bvp_support_hindenburg :, the BVP?], the NSDAP, and the various minor parties of the center-right. With this in mind, and the fact that a victory for Thälmann is plainly impossible, the Executive Committee of the Comintern has instructed us to drop out in the second round.
 
-@marx_campaign
+- @drop_out: We must drop out.
+- @stay: We will stay in the race!
 
-- @attack_thalmann_m: Attempt to win back our left-wing, and attack Thälmann.
-- @democracy_rally_m: Rally for democracy, and against monarchism.
-- @donate_z: Provide more campaign resources for the right to spend.
+@stay
+subtitle: This would be in defiance of the Comintern - "It is not the task of the proletariat to select the most skilful representative of the interests of the bourgeoisie, to choose the lesser evil between the civil dictator Marx and the military dictator Hindenburg."
+on-arrival: comintern_relation -= 5; rfb_strength += 10; thalmann_percent -= 0.05
+go-to: campaign_thalmann
+
+We have defied the Comintern's order and chosen to keep Thälmann in the running. What will our campaign be?
+
+@campaign_thalmann
+
+- @class_struggle_t: Rally for the class struggle of the proletariat against the bourgeoisie!
+- @campaign_t: Campaign for Thälmann.
 - @round1: Let the voting begin...
 
-@attack_thalmann_m
-subtitle: -1 resource - this may have the effect of popularizing Thälmann!
-on-arrival: resources -= 1; spd_relation -= 5; workers_kpd += 2; unemployed_kpd += 2; left_dissent -= 5; left_strength -= 5; nationalism += 2; pro_republic -= 2
-go-to: marx_campaign
-choose-if: resources >= 1
-max-visits: 1
-
-We attack Thälmann for every fault we can find, and make concessions to our left wing. In doing so, we may be inadvertantly advertising Thälmann, all the while causing further uncertainty amongst right-wing swing voters. Still, any major risk of the party's left refusing to vote Marx seems gone, for now.
-
-@democracy_rally_m
+@class_struggle_t
 subtitle: -1 resource
 choose-if: resources >= 1
-on-arrival: resources -= 1; pro_republic += 6; nationalism -= 3; workers_dnvp -= 2; new_middle_dnvp -= 2; left_dissent -= 2
-go-to: marx_campaign
+on-arrival: resources -= 1; socialism += 4; workers_kpd += 5*(1-dissent); unemployed_kpd += 5*(1-dissent); thalmann_percent += 0.05
 max-visits: 1
+go-to: campaign_thalmann
 
-We rally behind Wilhelm Marx as a defender of democracy and the republic [? if hindenburg_campaign : against Paul von Hindenburg and the monarchists backing him. ?][? if not hindenburg_campaign : against the right which sought to undermine democracy by asking Paul von Hindenburg to run. ?]
+We rally for the class struggle of the proletariat against the bourgeoisie, emphasizing that both Marx and Hindenburg represent the same enemy in this struggle.
 
-@donate_z
-subtitle: -1 resource - this may anger our left-wing further!
-choose-if: resources >= 1
-on-arrival: resources -= 1; catholics_z += 2; left_dissent += 2
-go-to: marx_campaign
-max-visits: 1
-
-We contribute to the campaign by helping the Centrists recover their right flank with resources. Let's hope that it's enough.
-
-@bc2
-
-- @rally_b: Rally for Otto Braun!
-- @campaign_b: Campaign for Otto Braun!
-- @round1: Let the voting begin...
-
-@rally_b
+@campaign_t
 subtitle: -1 resource
 choose-if: resources >= 1
 on-arrival: resources -= 1
 max-visits: 1
+go-to: tc2
 
-- @class_struggle: The class struggle of the proletariat against the bourgeoisie.
-- @welfare: Sozialpolitik - the maintenance and expansion of social welfare programs.
-- @democracy: Expanding our nascent democracy and defending it against dictatorship and fascism.
-- @pacifism: Opposing war, nationalism, and militarism at all costs.
-- @local: A mixture of various local and national concerns that resonate most with the audience.
+We will campaign for Thälmann. But amongst which demographic?
 
-
-@class_struggle
-on-arrival: workers_spd += 4*(1-dissent); unemployed_spd += 3*(1-dissent) if left_strength > reformist_strength; workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 2 if not new_middle_conscious; socialism += 2*(1-dissent); ddp_relation -= 10; z_relation -= 10; dvp_relation -= 10
-go-to: bc2
-
-Our message of class struggle appeals to the left wing of the working class, while potentially alienating the middle class. [? if nationalization_progress > 0 : Our achievements in nationalization have assisted our messaging. ?]
-
-@welfare
-on-arrival: workers_spd += 3*(1-dissent); workers_spd += 3*(1-dissent) if welfare > 0; unemployed_spd += 3*(1-dissent) if welfare > 0; unemployed_spd += 4*(1-dissent) if welfare > 1; reformist_strength += 3; labor_strength += 4; reformist_dissent -= 3; labor_dissent -= 3;
-go-to: bc2
-
-The reformist message appeals to the organized workers, whose benefits are the accomplishments of social democracy. [? if welfare > 1 : Our achievements in expanding welfare have made this message more effective. ?]
-
-@democracy
-on-arrival: democratization += 1; pro_republic += 2*(1 - dissent); workers_spd += 4*(1-dissent) if democratization >= 3; unemployed_spd += 3*(1-dissent) if democratization >= 3; pro_republic += 4*(1 - dissent) if democratization >= 3; new_middle_spd += 4*(1-dissent) if democratization >= 3 
-go-to: bc2
-
-Our speakers defend the republican system and rail against the monarchists and authoritarians who threaten it.
-
-[? if democratization < 3 : Talk of democracy does not excite the workers as much as more practical issues. But that may change; part of our job is to provide political education to the proletariat. ?]
-[? if democratization >= 3 : Since we have consistently made democratization a theme of our campaign, the workers are enthusiastic about our message. ?]
-
-@pacifism
-on-arrival: pacifism += 1; nationalism -= 2*(1 - dissent); workers_spd += 4*(1 - dissent) if pacifism >= 3; unemployed_spd += 3*(1-dissent) if pacifism >= 3; nationalism -= 3*(1-dissent) if pacifism >= 3; new_middle_spd += 4*(1-dissent) if pacifism >= 3
-go-to: bc2
-
-Our speakers denounce the military establishment and all the spending entering that black hole. Some adventurous speakers question the responsibility of the military elites in organizing the Great War.
-
-[? if pacifism < 3 : Given the volume of nationalist indoctrination in our society, it is difficult to argue so vehemently against the military. ?]
-[? if pacifism >= 3 : Since we have consistently made pacifism a theme of our campaign, the workers are enthusiastic about our message. ?]
-
-@local
-on-arrival: workers_spd += 3*(1-dissent); old_middle_spd += 1*(1-dissent); new_middle_spd += 2*(1-dissent); unemployed_spd += 3*(1-dissent);
-go-to: bc2
-
-Our speakers have gauged the mood and are speaking to the issues that seem to most affect the workers in this moment.
-
-@campaign_b
-subtitle: -1 resource
-choose-if: resources >= 1
-on-arrival: resources -= 1
-max-visits: 1
+@tc2
 
 - @workers: The urban working class, our traditional support base.
 - @new_middle: The "new middle class" of government employees and white-collar workers.
@@ -442,89 +327,37 @@ max-visits: 1
 - @unemployed: The unemployed.
 
 @workers
-on-arrival: workers_spd += 6*(1-dissent); workers_spd -= 2 if unemployed >= 15; workers_spd -= 2 if unemployed >= 25; workers_spd += 6*(1-dissent) if wtb_adopted = 1; workers_spd += 3*(1-dissent) if nationalization_progress >= 1;
-go-to: bc2
+on-arrival: workers_kpd += 6*(1-dissent); workers_spd -= 2 if unemployed >= 15; workers_spd -= 2 if unemployed >= 25
+go-to: tc2
 
-We have increased our campaigning among the workers. [? if unemployed >= 15: The high levels of unemployment make our campaign more difficult. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract workers. ?]
+We have increased our campaigning among the workers. [? if unemployed >= 15: The high levels of unemployment make our campaign more easy. ?]
 
 @new_middle
-on-arrival: new_middle_spd += 6*(1-dissent); new_middle_spd -= 4 if socialism <= 49 and peoples_party == 0; peoples_party_support += 1;
-go-to: bc2
+on-arrival: new_middle_kpd += 4*(1-dissent); new_middle_spd -= 4 if socialism <= 49
+go-to: tc2
 
 We have increased our campaigning among the new middle class. [? if socialism <= 49 and peoples_party == 0: The popular antipathy towards socialism among this group makes our campaign more difficult. ?] [? if peoples_party > 0: As a people's party, we have an easier time increasing support among the middle class than before. ?]
 
 @old_middle
-on-arrival: old_middle_spd += 5*(1-dissent); old_middle_spd -= 3 if nationalism >= 51 and peoples_party == 0; peoples_party_support += 1
-go-to: bc2
+go-to: tc2
 
-We have increased our campaigning among the old middle class. [? if nationalism >= 51 and peoples_party == 0: The high levels of nationalism among this group make our campaign more difficult. ?] [? if peoples_party > 0: As a people's party, we have an easier time increasing support among the middle class than before. ?]
+We have increased our campaigning among the old middle class. This does nothing.
 
 @rural
-on-arrival: rural_spd += 5*(1-dissent); rural_spd -= 3*(1-dissent) if peoples_party == 0; peoples_party_support += 1; rural_spd += 3*(1-dissent) if rural_policy >= 2
-go-to: bc2
+on-arrival: rural_kpd += 3*(1-dissent); rural_kpd -= 3*(1-dissent) if not rural_policy
+go-to: tc2
 
-We have increased our campaigning among farmers. [? if peoples_party == 0: We have not historically campaigned much among the farmers, and they do not trust us. ?][? if peoples_party > 0: As a people's party, we have an easier time increasing support among farmers than before. ?][? if rural_policy >= 2 : Our rural policies have made it easier for us to build support among farmers. ?]
+We have increased our campaigning among farmers. 
 
 @unemployed
-on-arrival: unemployed_spd += 6*(1-dissent); unemployed_spd -= 3 if welfare < 0; unemployed_spd += 6*(1-dissent) if wtb_adopted = 1; unemployed_spd += 3*(1-dissent) if welfare >= 2;
-go-to: bc2
+on-arrival: unemployed_kpd += 6*(1-dissent); unemployed_spd -= 3 if welfare < 0
+go-to: tc2
 
-We have increased our campaigning among the unemployed. [? if welfare < 0: The welfare cuts and resultant poverty make our campaign more difficult, since we are associated with the government that enacted these cuts, and our campaign may even backfire. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract support from the unemployed. ?]
+We have increased our campaigning among the unemployed. 
 
-@gessler_consolidation
-
-Otto Gessler has landed [+ gessler_votes_disp +]%, and is, at first, the favorite to win.
-
-- @but: But...
-
-@but
-subtitle: There's always a but.
-on-arrival: held_campaign = 0; hergt25_campaign = 0; ludendorff_campaign = 0; hindenburg_campaign = 1; bvp_support_hindenburg = 1 if z_relation < 55; bvp_support_gessler = 1 if z_relation > 65; nationalism += 5
-
-Paul von Hindenburg has unexpectedly entered the race in the second round as the candidate of the **Reichsblock**. Considered by the right-wing a war hero, Paul von Hindenburg was a Field Marshal in the German Empire and managed to win the Battle of Tannenberg against Russia. To us, however, he is a reactionary junker and one of the primary peddlers of the stab-in-the-back myth, the same which recently cost Friedrich Ebert his life. 
-
-The DVP is under immense internal pressure to withdraw its backing of Gessler, which would leave us without a candidate and force us to field another one.
-
-- @convince_dvp_gessler: Convince the DVP to continue to back Gessler.
-- @convince_dvp_abstain: Convince the DVP to abstain.
-- @unfortunate: Unfortunate.
-
-@convince_dvp_gessler
-choose-if: resources >= 2
-subtitle: -2 resources
-on-arrival: resources -= 2; dvp_abstain = 1; old_middle_dvp -= 4; new_middle_dvp -= 3; rural_dvp -= 4; dvp_relation -= 10; left_dissent += 10; workers_spd -= 3; unemployed_spd -= 3; left_strength += 5
-
-We try to convince the DVP to stay in the Gessler campaign, causing immense debate within the DVP. Many on the right may vote Hindenburg anyway. In the end, in the name of party unity, it is decided the DVP will abstain in the election.
-
-- @round1: Let the voting begin...
-
-@convince_dvp_abstain
-choose-if: resources >= 1
-subtitle: -1 resource
-on-arrival: resources -= 1; dvp_support_hindenburg = 1; old_middle_dvp -= 2; new_middle_dvp -= 1; rural_dvp -= 2; dvp_relation -= 5; left_dissent += 5; workers_spd -= 2; unemployed_spd -= 2
-go-to: unfortunate
-
-We try to convince the DVP to at least abstain, but our efforts are a failure and the party elects to withdraw its backing for Gessler and turn to the war hero Hindenburg instead. We will need to find another candidate to field against Hindenburg.
-
-@unfortunate
-on-arrival: left_dissent += 2 if not dvp_support_hindenburg; dvp_support_hindenburg = 1
-
-[? if not dvp_support_hindenburg : Without Gessler, we will need to find another candidate to field. ?]
-
-- @braun_r2: Braun?
-- @marx_r2: Marx?
-
-@braun_r2
-choose-if: not_lazy
-unavailable-subtitle: The Weimar parties are unwilling.
-
-Nah uh
-
-@marx_r2
-subtitle: It may be necessary to preserve the coalition.
-on-arrival: spd_prussia = 1; braun_percent = 0.8; gessler_campaign = 0; spd_support_marx = 1; ddp_support_marx = 1; marx_campaign = 1; bvp_support_marx = 1 if bvp_support_gessler; bvp_support_gessler = 0
-
-We back Wilhelm Marx from the Center Party. In return, the Center Party votes Otto Braun for M-P of Prussia.
+@drop_out
+subtitle: The Comintern compels us - "The Communists cannot take the position that the question of monarchy or bourgeois republic is a matter of indifference to us."
+on-arrival: comintern_relation += 1; rfb_strength -= 10; left_dissent += 10; thalmann_campaign = 0
 
 - @round1: Let the voting begin...
 
