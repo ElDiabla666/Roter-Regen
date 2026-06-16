@@ -46,7 +46,7 @@ We maintain our current dues.
 
 @reduce
 subtitle: Our dues would provide us [+ dues - 1 +] if we reduced them.
-choose-if: dues > 1
+choose-if: dues >= 1
 on-arrival: dues -= 1; resource_gain -= 1; left_dissent -= 8; center_dissent -= 8; reformist_dissent -= 8; labor_dissent -= 8
 go-to: financial_situation
 
@@ -79,7 +79,7 @@ We maintain our current level of Comintern financing.
 
 @reduce_moscow
 subtitle: Comintern financing would provide us [+ comintern_funding - 1 +] if we reduced them.
-choose-if: comintern_funding > 1
+choose-if: comintern_funding >= 1
 on-arrival: comintern_funding -= 1; comintern_relation += 1; resource_gain -= 1
 go-to: financial_situation
 
