@@ -264,7 +264,6 @@ Otto Gessler has won the election as the candidate of the democratic parties, in
 
 @no_majority_round1
 on-arrival: hellpach_campaign = 0; ddp_support_marx = 1; thalmann_percent += 0.1 if thalmann_percent <= 0.9; braun_percent = 1 if thalmann_percent > 0.9
-go-to: thalmann2_menu
 
 As expected, there is no majority in the first round of voting.
 
