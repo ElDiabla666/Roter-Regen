@@ -1,0 +1,123 @@
+title: RoteRoter Frontkämpferbund
+new-page: true
+is-card: true
+tags: party_affairs
+view-if: reichsbanner_timer <= 0
+card-image: img/rfb.png
+on-arrival: month_actions += 1; priorities_set = 0; drive_performed = 0; funding_set = 0; reichsbanner_timer += 6; rfb_militarization_cost = 2 if rfb_militancy > 0.1 else rfb_militarization_cost = 1; rfb_militarization_cost = 3 if rfb_militancy > 0.25
+max-visits: 6
+#subtitle: Paramilitary organizing in defense of the revolution.
+go-to: options_rfb
+
+= RoteRoter Frontkämpferbund
+
+The *RoteRoter Frontkämpferbund* is a mass organisation to defend the Communists against state repression and strengthen us for revolution! It is against the Republicans, but more importantly the reactionaries who threaten us! 
+
+[? if workers_kpd < 5 or workers_kpd < workers_nsdap : The RFB is having a more difficult time recruiting, as the KPD is not yet the dominant party among the workers. Many potential members remain with the Social Democrats or have been lured by the rising fascist promises. ?]
+
+@options_rfb
+
+We have several options.
+
+- @priorities: Let's change the priorities of the Roter Frontkämpferbund.
+- @drive: Fund a large-scale extraordinary recruitment drive for the RFB.
+- @funding: Let's change the RFB's funding.
+- @women_rb
+- @pay: Fund the RFB in accordance to what it has been allocated.
+- @default: We cannot pay the RFB at this moment.
+- @cancel_advisor_action
+
+@priorities
+view-if: not priorities_set 
+
+With the RFB's current level of funding, it can focus on militarization or recruitment. The more militarized we are, the generally harder it is to mass recruit, where recruitment additionally helps us in bolstering our support. However, without militarization, we have no real defensive capabilities. What should we prioritize?
+
+Focus on militancy: [+ militancy_priority : militancy +]
+
+Focus on recruitment: [+ recruitment_priority : militancy +]
+
+- @shift_militancy: Shift towards a greater emphasis on military-style training and equipment.
+- @shift_recruitment: Shift towards a greater emphasis on the mass mobilization of all workers.
+- @options_rfb: The current priorities of the RFB are fine.
+
+@shift_militancy
+choose-if: militancy_priority <= 0.9
+subtitle: [? if comintern_line == 1 : The Comintern approves of this course. ?][? if comintern_line == 2 and militancy_priority >= 0.25 : The Comintern disapproves of this course. ?]
+unavailable-subtitle: Militancy is our full focus.
+on-arrival: militancy_priority += 0.1; recruitment_priority -= 0.1; priorities_set = 1; comintern_relation += 1 if comintern_line == 1; comintern_relation -= 1 if comintern_line == 2 and militancy_priority >= 0.15
+go-to: options_rfb
+
+We have reassessed our priorities, and adjusted our funding.
+
+@shift_recruitment
+choose-if: recruitment_priority <= 0.9
+subtitle: [? if comintern_line == 2 and militancy_priority >= 0.25 : The Comintern approves of this course. ?][? if comintern_line == 1 : The Comintern disapproves of this course. ?]
+unavailable-subtitle: Recruitment is our full focus.
+on-arrival: recruitment_priority += 0.1; militancy_priority -= 0.1; priorities_set = 1; comintern_relation -= 1 if comintern_line == 1; comintern_relation += 1 if comintern_line == 2 and militancy_priority >= 0.15
+go-to: options_rfb
+
+We have reassessed our priorities, and adjusted our funding.
+
+@drive
+subtitle: -[+ rfb_militarization_cost +] resources.
+choose-if: resources >= rfb_militarization_cost
+on-arrival: resources -= rfb_militarization_cost; rfb_strength += kpd_votes*2*recruitment_priority*(1-(rfb_militancy/5)); rfb_militancy += 0.05*militancy_priority; drive_performed = 1
+go-to: options_rfb
+
+We inject a large stipend of resources into the RFB to help it in a one-time recruitment campaign, bolstering its strengths notably.
+
+#- Orient reichsbanner towards anti-fascism (only available if we have prioritized anti fascism)
+
+@funding 
+subtitle: We currently pay the RFB [+ rfb_funding +].
+
+We currently pay the [+ rfb_funding +], financing its upkeep and, where it has surplus funds, growth. 
+
+- @options_rfb: Maintain our current funding.
+- @reduce: Reduce funding.
+- @increase: Increase funding.
+
+@reduce
+choose-if: rfb_funding > 0
+unavailable-subtitle: Funding has already been gutted.
+on-arrival: rfb_funding -= 1; funding_set = 1
+go-to: options_rfb
+
+We cut funding to the RFB, assessing that our party has other, greater priorities. 
+
+@increase
+on-arrival: rfb_funding += 1; funding_set = 1
+go-to: options_rfb 
+
+We incrase funding for the RFB, assessing that it is one of our primary priorities.
+
+@pay
+subtitle: -[+ rfb_funding +] resources. This is needed to maintain the RFB at its current capacity.
+choose-if: resources >= rfb_funding
+on-arrival: resources -= rfb_funding; defaults = 0
+
+By maintaining the RFB, we allow it to reach its full potential, at least within the bounds of the funding we have allocated it.
+
+@default
+subtitle: The RFB may fall into disrepair with such neglect...
+on-arrival: defaults += 1; rfb_strength *= (0.9*(1-recruitment_priority)); rfb_militancy *= (0.9*(1-militancy_priority)); rfb_strength -= rfb_strength*(0.1*defaults); rfb_militancy -= rfb_militancy*(0.1*defaults)
+
+The RFB will go without funding this cycle. This is not good.
+
+@women_rb
+title: Allow women to join the RFB.
+subtitle: -1 resources - This might cause a backlash from reactionary members.
+choose-if: resources > 0
+view-if: womens_rights >= 2
+on-arrival: resources -= 1; rfb_militancy *= 0.85; rfb_strength += 400; women_in_rb = 1; rfb_militancy += 0.05 if repealed_175; rfb_militancy += 0.04 if trans_rights; rfb_militancy += 0.05 if reformed_183;
+go-to: homosexual if trans_rights or repealed_175 or reformed_183; options_rfb
+max-visits: 1
+achievement: women_reichsbanner
+
+The suggestion to allow women into the RFB is a controversial but not outlandish idea. These are exceptional times and we have already made great strides towards Womans Emancipation besides. Mixed and specialised units for women have been established, woman cadres have also became formally organised and trained like never before. [? if homosexual_rights > 0: and even some covert units for transsexuals and homosexuals ?].
+
+After allowing women to join, the number of small comrades who leave is more than balanced out by the number of radicalised women and others who join. However, many of our departed members were veterans, and many of the new members have no experience with military-style training.
+
+@homosexual
+achievement: anders_als_die_andern
+go-to: options_rfb
