@@ -308,6 +308,9 @@ go-to: campaign_thalmann
 
 We rally for the class struggle of the proletariat against the bourgeoisie, emphasizing that both Marx and Hindenburg represent the same enemy in this struggle.
 
+@tc2
+go-to: campaign_thalmann
+
 @campaign_t
 subtitle: -1 resource
 choose-if: resources >= 1
@@ -316,8 +319,6 @@ max-visits: 1
 go-to: tc2
 
 We will campaign for Thälmann. But amongst which demographic?
-
-@tc2
 
 - @workers: The urban working class, our traditional support base.
 - @new_middle: The "new middle class" of government employees and white-collar workers.
