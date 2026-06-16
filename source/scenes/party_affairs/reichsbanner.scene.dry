@@ -27,7 +27,7 @@ The *RoteRoter Frontkämpferbund* is a mass organisation to defend the Communist
 choose-if: resources >= rb_militarization_cost
 unavailable-subtitle: Not enough resources ([+ rb_militarization_cost +] needed).
 subtitle: -[+ rb_militarization_cost +] resources
-on-arrival: resources -= rb_militarization_cost; rfb_investment += 1; rfb_strength += 100; rfb_militancy += 0.05; left_strength += 2; left_dissent -= 2; reformist_dissent += 5; spd_militancy += 0.05; workers_kpd+= 2*(1-dissent); unemployed_kpd+= 2*(1-dissent); spd_relation -=5 z_relation -= 5 if historical_mode 
+on-arrival: resources -= rb_militarization_cost; rfb_investment += 1; rfb_strength += 100; rfb_militancy += 0.05; left_strength += 2; left_dissent -= 2; reformist_dissent += 5; spd_militancy += 0.05; workers_kpd+= 2*(1-dissent); unemployed_kpd+= 2*(1-dissent); spd_relation -= 5; z_relation -= 10 
 
 SSome are concerned about the militarisation of the RFB on adventurist grounds. They say it risks alienating potential allies among Social Democratic workers and gives the state an excuse for repression. On the other hand, more militant, courageous and gallant workers are being drawn to our increasing ranks, seeing us as the only force truly preparing for the coming confrontation and the only group that will fight!
 
