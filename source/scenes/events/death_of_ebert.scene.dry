@@ -265,7 +265,7 @@ on-arrival: president = "Gessler"; pro_republic += 2; socialism -= 5; left_disse
 Otto Gessler has won the election as the candidate of the democratic parties, including the DVP. We have in this campaign pulled the DVP away from the DNVP and the right as a whole towards the center, but also created a whole on the left that the KPD is eager to fill. 
 
 @no_majority_round1
-on-arrival: hellpach_campaign = 0; ddp_support_marx = 1; thalmann_percent += 0.1 if thalmann_percent <= 0.9; braun_percent = 1 if thalmann_percent > 0.9
+on-arrival: hellpach_campaign = 0; ddp_support_marx = 1; thalmann_percent += 0.1 if thalmann_percent <= 0.9; thalmann_percent = 1 if thalmann_percent > 0.9
 
 As expected, there is no majority in the first round of voting.
 
@@ -290,7 +290,7 @@ Besides that, he has received the backing of the DVP, the DNVP[? if bvp_support_
 
 @stay
 subtitle: This would be in defiance of the Comintern - "It is not the task of the proletariat to select the most skilful representative of the interests of the bourgeoisie, to choose the lesser evil between the civil dictator Marx and the military dictator Hindenburg."
-on-arrival: comintern_relation -= 5; rfb_strength += 10; thalmann_percent -= 0.05
+on-arrival: comintern_relation -= 5; rfb_strength += 10; thalmann_percent -= 0.05; pro_republic += 6 if braun_votes >= 27; nationalism -= 3 if braun_votes >= 27
 go-to: campaign_thalmann
 
 We have defied the Comintern's order and chosen to keep Thälmann in the running. What will our campaign be?
@@ -363,7 +363,7 @@ We have increased our campaigning among the unemployed.
 
 @drop_out
 subtitle: The Comintern compels us - "The Communists cannot take the position that the question of monarchy or bourgeois republic is a matter of indifference to us."
-on-arrival: comintern_relation += 1; rfb_strength -= 10; left_dissent += 10; thalmann_campaign = 0
+on-arrival: comintern_relation += 1; rfb_strength -= 10; left_dissent += 10; thalmann_campaign = 0; pro_republic += 6; nationalism -= 3; socialism -= 2
 
 We have dropped out from the election, complying with the Comintern directive to do so, although upsetting the currently dominant left in the party.
 
