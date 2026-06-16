@@ -8,20 +8,20 @@ go-to: pres_menu
 
 = The Death of Ebert
 
-President Friedrich Ebert has passed away at age 54 after delaying treatment for illness in order to defend his legacy from the same reactionaries which he allowed to fester in the name of keeping the workers down. His death means uncertainty in the republic's future, though it unfortunately seems unlikely that any other than the bourgeoisie will capitalize on this uncertainty.
+The dog, President Friedrich Ebert, has passed away at age 54 after delaying treatment for illness in order to defend his legacy in the bourgeois courts from the same reactionaries which he allowed to regrow like parasites, all in the name of massacring the German Revolution. Notwithstanding, the dog's death means there is merely uncertainty in the republic's future, though it unfortunately seems unlikely that any other than the bourgeoisie right will be able to capitalise on this uncertainty.
 
-Now, new presidential elections have been scheduled. It is expected that a wide variety of candidates will enter the race, at least in the first round. It seems natural that we would do so as well.
+Now, new presidential elections have been scheduled. It is expected that a wide variety of candidates will enter the race, at least in the first round. It seems natural that we would do so as well, to campaign and motivate the base.
 
 @pres_menu
 
-- @back_thalmann: We will run Ernst Thälmann of the RFB.
+- @back_thalmann: We will run Comrade Deputy Chairman Ernst Thälmann of the RFB.
 
 @back_thalmann
 subtitle: This is really the only option.
 on-arrival: thalmann_percent = 0.7; braun_campaign = 1
 go-to: ct2
 
-We back Ernst Thälmann, who, while not being very well known at this point outside of Hamburg, has nonetheless proven a faithful and dedicated organizer. The SPD backs Otto Braun after Paul Löbe refuses to run, while the DVP and DNVP run Karl Jarres as the "Reichsblock" candidate. The Center Party has run Wilhelm Marx, their party leader, while the BVP, unwilling to commit to any of the main candidates, has run Heinrich Held. The DDP is running Willy Hellpach and meanwhile, the recently reformed National Socialists are backing Ludendorff.
+We back Ernst Thälmann, who, while not being very well known at this point outside of Hamburg, has nonetheless proven a faithful and dedicated organizer. The SPD backs Otto Braun after Paul Löbe refuses to run, while the DVP and DNVP run Karl Jarres as the "Reichsblock" candidate. The Center Party has run Wilhelm Marx, their party leader, while the BVP, unwilling to commit to any of the main candidates, has run Heinrich Held. The DDP is running Willy Hellpach and meanwhile, the recently reformed, self declared, "National Socialists" are backing Ludendorff.
 
 @ct2
 
@@ -37,7 +37,7 @@ on-arrival: resources -= 2; thalmann_percent += 0.3;
 go-to: ct2
 max-visits: 1
 
-We launch a large-scale campaign for Thälmann to ensure turnout from our party members.
+We launch a large-scale campaign for Thälmann to ensure turnout from our party members and peal away left leaning voters from the SPD.
 
 @small_campaign
 subtitle: -1 resource
@@ -245,7 +245,7 @@ Results:
 @hindenburg_wins
 on-arrival: former_president = "Hindenburg"; president = "Hindenburg"; pro_republic -= 5; nationalism += 5; workers_spd -= 6; unemployed_spd -= 6; workers_kpd += 4; unemployed_kpd += 4; west_relation -= 2; east_relation -= 2; dvp_relation -= 5; spd_relation += 5; left_strength += 5; jarres_campaign = 0; marx_campaign = 0; held_campaign = 0; thalmann_campaign = 0; ludendorff_campaign = 0; hellpach_campaign = 0; gessler_campaign = 0; braun_campaign = 0; z_support_braun = 0; ddp_support_braun = 0; bvp_support_hindenburg = 0
 
-Paul von Hindenburg has won the election with the backing of all the reactionary right organized under the **Reichsblock** behind him. Though many in our party anticipate an immediate restructuring of Germany along authoritarian and aristocratic lines, he seems, for now, to be following the constitution. Regardless, this signals a dark turn for German democracy. Who knows what Hindenburg may do in power?
+The Junker Paul von Hindenburg has won the election with the backing of all the reactionary right organized under the **Reichsblock** behind him. Though many in our party anticipate an immediate restructuring of Germany along authoritarian and aristocratic lines, he seems, for now, to be following the constitution. Regardless, this signals a dark turn for not only the Republic but also for the German left. Who knows what Hindenburg may do in power?
 
 @marx_wins
 on-arrival: former_president = "Marx"; president = "Marx"; marx_relation += 10; pro_republic += 5; nationalism -= 5; z_relation += 5; ddp_relation += 5; reformist_strength += 5; jarres_campaign = 0; marx_campaign = 0; held_campaign = 0; thalmann_campaign = 0; ludendorff_campaign = 0; hellpach_campaign = 0; gessler_campaign = 0; braun_campaign = 0; z_support_braun = 0; ddp_support_braun = 0; bvp_support_hindenburg = 0
@@ -279,9 +279,9 @@ todo
 @hindenburg_enters
 on-arrival: held_campaign = 0; spd_support_marx = 1; braun_campaign = 0; jarres_campaign = 0; ludendorff_campaign = 0; dvp_support_hindenburg = 1; hindenburg_campaign = 1; bvp_support_hindenburg = 1 if z_relation < 20 and spd_support_marx; bvp_support_marx = 1 if z_relation > 20 or not spd_support_marx; nationalism += 5
 
-Expectedly, the Weimar establishment consolidates into a **Volksblock** backing Wilhelm Marx. Shortly after, we receive news of the entry of Paul von Hindenburg into the race. Considered by the right-wing a war hero, Paul von Hindenburg was a Field Marshal in the German Empire and managed to win the Battle of Tannenberg against Russia. To us, however, he is a reactionary junker and monarchist.
+Expectedly, the Weimar establishment consolidates into a **Volksblock** backing Wilhelm Marx. Shortly thereafter, we receive news of the entry of Paul Ludwig Hans Anton von Beneckendorff und von Hindenburg into the race. As his long name and the particular use of Von may suggest, he is an aristocratic animal of the Duchy of Posen. He was a field marshal of the German Army in the slaughter of 1914-18 and a faithful butcher of the German Army for five decades and three conflicts with one great war. It is not so surprising then to reveal that he is a Royalist, who would rather the Kaiser back on the throne, in fact he had asked for the Kaiser’s permission to run twice before! There’s also reports of this dogs possible dealings with one *Adolf Hitler* from the so-called Beer Hall Putsch a few years ago, his associate Ludendorff had partook in it, though he himself called for unity at times of crises.
 
-He has received the backing of the DVP, the DNVP[? if bvp_support_hindenburg :, the BVP?], the NSDAP, and the various minor parties of the center-right. With this in mind, and the fact that a victory for Thälmann is plainly impossible, the Executive Committee of the Comintern has instructed us to drop out in the second round.
+Besides that, he has received the backing of the DVP, the DNVP[? if bvp_support_hindenburg :, the BVP?], said Herr Hitler’s NSDAP, and the various minor parties of the center-right. With this in mind, and the fact that a victory for Thälmann is plainly impossible, the Executive Committee of the Comintern has instructed us to drop out in the second round.
 
 - @drop_out: We must drop out.
 - @stay: We will stay in the race!
