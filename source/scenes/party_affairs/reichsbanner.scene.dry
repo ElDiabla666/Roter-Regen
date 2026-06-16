@@ -13,6 +13,7 @@ max-visits: 6
 The *RoteRoter Frontkämpferbund* is a mass organisation to defend the Communists against state repression and strengthen us for revolution! It is against the Republicans, but more importantly the reactionaries who threaten us! 
 
 [? if workers_kpd < 5 or workers_kpd < workers_nsdap : The RFB is having a more difficult time recruiting, as the KPD is not yet the dominant party among the workers. Many potential members remain with the Social Democrats or have been lured by the rising fascist promises. ?]
+
 - @militant: Fund more military-style training and equipment for the Roter Frontkämpferbund.
 - @militant_2: Use our existing resources to support more training for the Roter Frontkämpferbund.
 - @same: Keep the RFB as it is.
