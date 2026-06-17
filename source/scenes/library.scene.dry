@@ -308,17 +308,17 @@ Dissent: [+ center_dissent : dissent +]
 
 Many SPD members are also part of the ADGB, the federation of free trade unions. Their goal is economic reform and benefits for organized workers.
 
-Strength: [+ labor_strength : strength +]
+Strength: [+ conciliator_strength : strength +]
 
-Dissent: [+ labor_dissent : dissent +]
+Dissent: [+ conciliator_dissent : dissent +]
 
 **Reformists**
 
 Reformists are pragmatic participants in government, and seek to expand the welfare state and defend democracy against the far right and left. [? if spd_prussia : They are dominant in the state government of Prussia. ?]
 
-Strength: [+ reformist_strength : strength +]
+Strength: [+ right_strength : strength +]
 
-Dissent: [+ reformist_dissent : dissent +]
+Dissent: [+ right_dissent : dissent +]
 
 @neorevisionists
 go-to: menu

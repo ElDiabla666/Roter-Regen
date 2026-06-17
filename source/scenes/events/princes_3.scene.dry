@@ -36,7 +36,7 @@ Regardless, the petition is now to be voted on by the Reichstag. Its rejection i
 
 @vote_for
 view-if: not princes_initiated
-on-arrival: reformist_dissent += 5; dvp_relation -= 5
+on-arrival: right_dissent += 5; dvp_relation -= 5
 
 Seeing the writing on the wall following the overperformance of the petition, we change course and vote for the law in the Reichstag. It, as expected, fails, meaning the holding of a referendum on the manner.
 
@@ -44,7 +44,7 @@ Seeing the writing on the wall following the overperformance of the petition, we
 - @neutral: A referendum we will continue to have no part in.
 
 @back_referendum
-on-arrival: reformist_dissent += 5; dvp_relation -= 5; z_relation -= 5; marx_relation -= 2; princes_initiated = 1; new_middle_spd -= 2; old_middle_spd -= 3
+on-arrival: right_dissent += 5; dvp_relation -= 5; z_relation -= 5; marx_relation -= 2; princes_initiated = 1; new_middle_spd -= 2; old_middle_spd -= 3
 
 Despite our previous opposition, we have chosen to in the end campaign in favor of the referendum. We will of course conduct our campaigns alone, and avoid any association with the communists; nonetheless it would cost too much for us to allow the communists to monopolize this clearly significant vote.
 

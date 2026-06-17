@@ -77,7 +77,7 @@ Breitscheid has been removed as an advisor. The Centrist faction disapproves.
 title: Remove Severing
 view-if: severing_advisor = 1
 tags: remove_advisor
-on-arrival: severing_advisor = 0; reformist_dissent += 5; n_advisors -= 1
+on-arrival: severing_advisor = 0; right_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
 Severing has been removed as an advisor. The Reformist faction disapproves.
@@ -86,7 +86,7 @@ Severing has been removed as an advisor. The Reformist faction disapproves.
 title: Remove Braun
 view-if: braun_advisor = 1
 tags: remove_advisor
-on-arrival: braun_advisor = 0; reformist_dissent += 5; n_advisors -= 1
+on-arrival: braun_advisor = 0; right_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
 Braun has been removed as an advisor. The Reformist faction disapproves.
@@ -95,7 +95,7 @@ Braun has been removed as an advisor. The Reformist faction disapproves.
 title: Remove Juchacz
 view-if: juchacz_advisor = 1
 tags: remove_advisor
-on-arrival: juchacz_advisor = 0; reformist_dissent += 5; n_advisors -= 1
+on-arrival: juchacz_advisor = 0; right_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
 Juchacz has been removed as an advisor. The Reformist faction disapproves.
@@ -104,7 +104,7 @@ Juchacz has been removed as an advisor. The Reformist faction disapproves.
 title: Remove Pfülf
 view-if: pfulf_advisor = 1
 tags: remove_advisor
-on-arrival: pfulf_advisor = 0; reformist_dissent += 5; n_advisors -= 1
+on-arrival: pfulf_advisor = 0; right_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
 Pfülf has been removed as an advisor. The Reformist faction disapproves.
@@ -116,7 +116,7 @@ Pfülf has been removed as an advisor. The Reformist faction disapproves.
 title: Remove Leipart
 view-if: leipart_advisor = 1
 tags: remove_advisor
-on-arrival: leipart_advisor = 0; labor_dissent += 5; n_advisors -= 1
+on-arrival: leipart_advisor = 0; conciliator_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
 Leipart has been removed as an advisor. The Labor faction disapproves.
@@ -125,7 +125,7 @@ Leipart has been removed as an advisor. The Labor faction disapproves.
 title: Remove Aufhäuser
 view-if: aufhauser_advisor = 1
 tags: remove_advisor
-on-arrival: aufhauser_advisor = 0; labor_dissent += 5; n_advisors -= 1
+on-arrival: aufhauser_advisor = 0; conciliator_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
 Aufhäuser has been removed as an advisor. The Labor faction disapproves.
@@ -134,7 +134,7 @@ Aufhäuser has been removed as an advisor. The Labor faction disapproves.
 title: Remove Wissell
 view-if: wissell_advisor = 1
 tags: remove_advisor
-on-arrival: wissell_advisor = 0; labor_dissent += 3; n_advisors -= 1
+on-arrival: wissell_advisor = 0; conciliator_dissent += 3; n_advisors -= 1
 go-to: rm_main
 
 Wissell has been removed as an advisor. The Labor faction disapproves.
@@ -144,7 +144,7 @@ Wissell has been removed as an advisor. The Labor faction disapproves.
 title: Remove Woytinsky
 view-if: woytinsky_advisor = 1
 tags: remove_advisor
-on-arrival: woytinsky_advisor = 0; labor_dissent += 3; n_advisors -= 1
+on-arrival: woytinsky_advisor = 0; conciliator_dissent += 3; n_advisors -= 1
 go-to: rm_main
 
 Woytinsky has been removed as an advisor. The Labor faction disapproves.
@@ -387,7 +387,7 @@ is-card: true
 card-image: img/portraits/SeveringCarl.jpg
 tags: reformist_advisor
 view-if: severing_advisor = 0 and n_advisors < 3
-on-arrival: severing_advisor = 1; n_advisors += 1; reformist_strength += 5
+on-arrival: severing_advisor = 1; n_advisors += 1; right_strength += 5
 go-to: advisor_menu
 
 Carl Severing is now an advisor.
@@ -399,7 +399,7 @@ is-card: true
 card-image: img/portraits/BraunOtto.jpg
 tags: reformist_advisor
 view-if: braun_advisor = 0 and n_advisors < 3
-on-arrival: braun_advisor = 1; n_advisors += 1; reformist_strength += 5
+on-arrival: braun_advisor = 1; n_advisors += 1; right_strength += 5
 go-to: advisor_menu
 
 Otto Braun is now an advisor.
@@ -410,7 +410,7 @@ subtitle: Marie Juchacz is the founder of Worker's Welfare, a mutual-aid organiz
 is-card: true
 card-image: img/portraits/JuchaczMarie.jpg
 view-if: juchacz_advisor = 0 and n_advisors < 3
-on-arrival: juchacz_advisor = 1; n_advisors += 1; reformist_strength += 5
+on-arrival: juchacz_advisor = 1; n_advisors += 1; right_strength += 5
 go-to: advisor_menu
 tags: reformist_advisor
 
@@ -503,7 +503,7 @@ is-card: true
 card-image: img/portraits/LeipartTheodor.jpg
 tags: labor_advisor
 view-if: leipart_advisor = 0 and n_advisors < 3 and unions_independent = 0
-on-arrival: leipart_advisor = 1; n_advisors += 1; labor_strength += 5
+on-arrival: leipart_advisor = 1; n_advisors += 1; conciliator_strength += 5
 go-to: advisor_menu
 
 Theodor Leipart is now an advisor.
@@ -515,7 +515,7 @@ is-card: true
 card-image: img/portraits/AufhäuserSiegfried.jpg
 tags: labor_advisor
 view-if: aufhauser_advisor = 0 and n_advisors < 3
-on-arrival: aufhauser_advisor = 1; n_advisors += 1; labor_strength += 5
+on-arrival: aufhauser_advisor = 1; n_advisors += 1; conciliator_strength += 5
 go-to: advisor_menu
 
 Siegfried Aufhäuser is now an advisor.
@@ -527,7 +527,7 @@ is-card: true
 card-image: img/portraits/WissellRudolf.jpg
 tags: labor_advisor
 view-if: wissell_advisor = 0 and n_advisors < 3 and unions_independent = 0
-on-arrival: wissell_advisor = 1; n_advisors += 1; labor_strength += 3
+on-arrival: wissell_advisor = 1; n_advisors += 1; conciliator_strength += 3
 go-to: advisor_menu
 
 Rudolf Wissell is now an advisor.
@@ -540,7 +540,7 @@ is-card: true
 card-image: img/portraits/WoytinskyWladimir.jpg
 tags: labor_advisor
 view-if: woytinsky_advisor = 0 and n_advisors < 3 and unions_independent = 0
-on-arrival: woytinsky_advisor = 1; n_advisors += 1; labor_strength += 3
+on-arrival: woytinsky_advisor = 1; n_advisors += 1; conciliator_strength += 3
 go-to: advisor_menu
 
 Wladimir Woytinsky is now an advisor.

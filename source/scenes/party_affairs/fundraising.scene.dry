@@ -47,7 +47,7 @@ We maintain our current dues.
 @reduce
 subtitle: Our dues would provide us [+ dues - 1 +] if we reduced them.
 choose-if: dues >= 1
-on-arrival: dues -= 1; resource_gain -= 1; left_dissent -= 8; center_dissent -= 8; reformist_dissent -= 8; labor_dissent -= 8
+on-arrival: dues -= 1; resource_gain -= 1; left_dissent -= 8; center_dissent -= 8; right_dissent -= 8; conciliator_dissent -= 8
 go-to: financial_situation
 
 Our current members appreciate this, but no one decides to join a party because of the low dues.
