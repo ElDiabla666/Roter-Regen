@@ -14,8 +14,9 @@ The [+ kpd_name +] runs several notable newspapers throughout Germany, most prom
 
 @media_options
 
+- @refound
 - @campaign
-- @editor
+- @e
 - @factional
 - @radio
 - @radio_2
@@ -25,7 +26,17 @@ The [+ kpd_name +] runs several notable newspapers throughout Germany, most prom
 - @easy_discard
 - @cancel_advisor_action
 
+@refound
+title: Refound Die Rote Fahne.
+subtitle: -2 resources. It was lost in the split.
+view-if: not die_rote_fahne
+choose-if: resources >= 2
+on-arrival: resources -= 2; die_rote_fahne = 1
+
+We have refounded Die Rote Fahne, poaching off editors loyal to us from the splitters that stole it and attempting to reconstruct the infrastructure. Our media ability will be hurt for a while.
+
 @editor
+view-if: die_rote_fahne
 title: Change the editor of Die Rote Fahne.
 subtitle: This may spark factional conflict.
 
@@ -62,6 +73,7 @@ on-arrival: comintern_relation -= 1; comintern_relation -= 1 if comintern_line =
 We place [+ drf_editor +] in control of Die Rote Fahne, bolstering the party right and their influence over the party. The removed faction grumbles at its loss of influence.
 
 @factional
+view-if: die_rote_fahne
 title: Support the party line in our polemics.
 subtitle: This will benefit the [+ drf_editor_faction +], as they hold the editorial board.
 on-arrival: workers_kpd -= 1; unemployed_kpd -= 1; {!
@@ -99,6 +111,7 @@ We support the party line as represented by Die Rote Fahne's editorial board, st
 
 
 @campaign
+view-if: die_rote_fahne
 title: The purpose of our media is to elect more Social Democrats.
 subtitle: Our newspapers will focus on the electoral campaign.
 on-arrival: campaign_media += 1; workers_kpd += 3*(1 - dissent); unemployed_kpd += 3*(1-dissent);
@@ -110,16 +123,17 @@ title: Why not fund a radio station?
 subtitle: -2 resources
 choose-if: resources >= 2
 unavailable-subtitle: Not enough resources.
-view-if: radio = 0
+view-if: radio = 0 and die_rote_fahne
 on-arrival: radio += 1; resources -= 2; new_middle_kpd += 2*(1 - dissent); workers_kpd += 2*(1 - dissent); left_dissent += 5; socialism += 2*(1 - dissent); nationalism -= 1*(1 - dissent) if pacifism > 1; pro_republic += 1*(1-dissent) if democratization > 1
 
 Our new radio station allows us to connect to people in a more intimate setting than before, spreading the message of communism along with music and other popular content. Since most proletarians cannot afford family radios right now, we are reaching the middle class, a fact of which many in our party are criticizing.
 
+@radio_2
 title: We must keep on building up our radio network.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-view-if: radio > 0 and radio <= 3
+view-if: radio > 0 and radio <= 3 and die_rote_fahne
 on-arrival: radio += 1; resources -= 1; new_middle_kpd += 2*(1 - dissent); workers_kpd += 3*(1 - dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 1*(1-dissent)*(democratization-2) if democratization > 2
 
 Our new radio network has a mix of popular and political programming, and is proving a success.
@@ -127,7 +141,7 @@ Our new radio network has a mix of popular and political programming, and is pro
 @radio_3
 title: We must keep on building up our radio network.
 subtitle: It is now financially self-sufficient, and does not require any more resources.
-view-if: radio > 3 and radio <= 5 and year <= 1931
+view-if: radio > 3 and radio <= 5 and year <= 1931 and die_rote_fahne
 on-arrival: radio += 1; new_middle_kpd += 3*(1 - dissent); workers_kpd += 4*(1 - dissent); rural_kpd += 2*(1 - dissent); unemployed_kpd += 1*(1-dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 1*(1-dissent)*(democratization-2) if democratization > 2
 
 Our radio network has become a successful tool for spreading our message.
@@ -137,7 +151,7 @@ title: We should keep on supporting our radio network.
 subtitle: As radio becomes more common, the novelty is beginning to wear off, and radio is becoming saturated in society. -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-view-if: radio > 3 and (radio >= 6 or year >= 1932) and radio <= 9
+view-if: radio > 3 and (radio >= 6 or year >= 1932) and radio <= 9 and die_rote_fahne
 on-arrival: radio += 1; resources -= 1; new_middle_kpd += 1*(1 - dissent); workers_kpd += 3*(1 - dissent); rural_kpd += 1*(1 - dissent); unemployed_kpd += 1*(1-dissent); socialism += 1*(1 - dissent); nationalism -= 2*(1 - dissent)*(pacifism-2) if pacifism > 2
 
 We are continuing to invest in our radio stations. Both commercial and political radio are becoming more prevalent, making it harder to spread our message amidst the competition.

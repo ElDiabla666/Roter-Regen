@@ -51,6 +51,7 @@ Q.comintern_line = 2;
 // 1 = offensive theory, 2 = united fronts, 3 = popular fronts
 Q.drf_editor = "Neumann";
 Q.drf_editor_faction = "Center";
+Q.die_rote_fahne = 1;
 
 // the state of the party
 // overall dissent reduces every increase in party support.

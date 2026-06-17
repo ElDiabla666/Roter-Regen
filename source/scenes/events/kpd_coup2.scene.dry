@@ -67,6 +67,7 @@ In the ensuing convention, the Comintern loyalists fail to muster a majority for
 - @we_are_the_party: They can't do that - *we* are the party!
 
 @we_are_the_party
+on-arrival: die_rote_fahne = 0 if drf_editor_faction != "Left"; drf_editor = "Maslow" if die_rote_fahne = 0; drf_editor_faction = "Left" if die_rote_fahne = 0
 
 The ensuing split consumes most of our organizations. KPD chapters are forced to choose which party of the two both claiming to represent the KPD they side with, as well as all party organs. By the end of it, Germany now has two parties both claiming to be the Communist Party of Germany.
 
