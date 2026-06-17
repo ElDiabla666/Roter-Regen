@@ -112,11 +112,11 @@ We support the party line as represented by Die Rote Fahne's editorial board, st
 
 @campaign
 view-if: die_rote_fahne
-title: The purpose of our media is to elect more Social Democrats.
+title: The purpose of our media is to elect more Communists.
 subtitle: Our newspapers will focus on the electoral campaign.
 on-arrival: campaign_media += 1; workers_kpd += 3*(1 - dissent); unemployed_kpd += 3*(1-dissent);
 
-Our campaign media is mostly reaching the workers who are already saturated with Socialist propaganda, but it must be doing *something*, or at least that is what we hope.
+Our campaign media is mostly reaching the workers who are already saturated with Communist propaganda, but it must be doing *something*, or at least that is what we hope.
 
 @radio
 title: Why not fund a radio station?
