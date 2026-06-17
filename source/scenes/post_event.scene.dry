@@ -294,6 +294,13 @@ if (Q.month_actions >= 1) {
             Q.rural_nsdap += 4/12;
         }
     }
+    if (Q.kpd_split) {
+        Q.workers_kpd -= ((100-Q.nationalism)/120)*1.05;
+        Q.workers_kpd2 += ((100-Q.nationalism)/120)*0.95;
+        Q.unemployed_kpd -= ((100-Q.nationalism)/120)*1.05;
+        Q.unemployed_kpd2 += ((100-Q.nationalism)/120)*0.95;
+        // the more internationalist people are, the more they value an international comintern movement? yeah, it's a bit silly and spurious, but in the absence of a better variable to determine how popular affiliation with the comintern is, i'll use this as a stand-in
+    }
 
     ////////////////////////// annual support changes
     if (Q.year < 1928 && Q.president != "Ebert") {
