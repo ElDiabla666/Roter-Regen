@@ -77,7 +77,8 @@ SPD: [+ spd_r +]%
 # 1928: 15, 1930: 15, 1932: 
 Z + BVP: [+ z_r +]%
 # 1928: 10, 1930: 13
-KPD: [+ kpd_r +]%
+[+ kpd_name +]: [+ kpd_r +]%
+[? if kpd_split : KPD(SKI): [+ kpd2_r +] ?]
 # 1928: 5, 1930: 4 (as DstP)
 [+ ddp_name +]: [+ ddp_r +]%
 # 1928: 9, 1930: 5
@@ -340,10 +341,19 @@ on-display: {!
 data = [
     {
         "id": "kpd",
-        "legend": "KPD",
-        "name": "KPD",
-        "seats": Q.kpd_r*5,
-    }];
+        "legend": Q.kpd_name,
+        "name": Q.kpd_name,
+        "seats": Math.round(Q.kpd_r*5),
+    }
+];
+if (Q.kpd_split && Q.kpd2_r) {
+    data.push({
+            "id": "kpd2",
+            "legend": "KPD(SKI)",
+            "name": "KPD(SKI)",
+            "seats": Math.round(Q.kpd2_r*5),
+            });
+}
 if (Q.sapd_formed && Q.sapd_r) {
     data.push({
             "id": "sapd",
@@ -357,49 +367,49 @@ data = data.concat([
         "id": "spd",
         "legend": "SPD",
         "name": "SPD",
-        "seats": Q.spd_r*5,
+        "seats": Math.round(Q.spd_r*5),
     },
     {
         "id": "ddp",
-        "legend": "DDP",
-        "name": "DDP",
-        "seats": Q.ddp_r*5,
+        "legend": Q.ddp_name,
+        "name": Q.ddp_name,
+        "seats": Math.round(Q.ddp_r*5),
     },
     {
         "id": "z",
         "legend": "Center",
         "name": "Center",
-        "seats": (Q.z_r - 3)*5,
+        "seats": Math.round((Q.z_r - 3)*5),
     },
     {
         "id": "bvp",
         "legend": "BVP",
         "name": "BVP",
-        "seats": 3*5,
+        "seats": Math.round(3*5),
     },
     {
         "id": "dvp",
         "legend": "DVP",
         "name": "DVP",
-        "seats": Q.dvp_r*5,
+        "seats": Math.round(Q.dvp_r*5),
     },
     {
         "id": "other",
         "legend": "Other",
         "name": "Other",
-        "seats": Q.other_r*5,
+        "seats": Math.round(Q.other_r*5),
     },
     {
         "id": "dnvp",
         "legend": "DNVP",
         "name": "DNVP",
-        "seats": Q.dnvp_r*5,
+        "seats": Math.round(Q.dnvp_r*5),
     },
     {
         "id": "nsdap",
         "legend": "NSDAP",
         "name": "NSDAP",
-        "seats": Q.nsdap_r*5,
+        "seats": Math.round(Q.nsdap_r*5),
     },
 ]);
 if (d3 && window) {
@@ -455,26 +465,29 @@ if (d3 && window) {
 
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
-{!<table>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td></tr>!}
+{!<table>!} 
+{!<tr><td>Party</td><td>Vote share</td><td>% Change</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#8B0000; outline: 2px; outline-style: solid;'> </div> !}**[+ kpd_name +]:** {!</td><td>!} **[+ kpd_r +]%** {!</td><td>!} **[+ str_change_kpd +]** {!</td></tr>!}
 
-[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div></td> <td> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
+[? if kpd_split : {!<tr><td><div class="box" style='background-color:#8B0000'> </div> !}KPD(SKI): {!</td><td>!} [+ kpd2_r +]% {!</td><td>!} [+ str_change_kpd2 +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#8B0000'> </div></td> <td>!}KPD: {!</td><td>!} [+ kpd_r +]% {!</td></tr>!}
+[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#C40000'> </div> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E3000F'> </div> !} SPD: {!</td><td>!} [+ spd_r +]% {!</td><td>!} [+ str_change_spd +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#000'> </div></td><td>!} Z: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#DCCA4A'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td><td>!} [+ str_change_ddp +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#69A2BE'> </div></td><td>!} BVP: {!</td><td>!} 3% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#000'> </div> !} Z: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td><td>!} [+ str_change_z +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#D5AC27'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#69A2BE'> </div> !} BVP: {!</td><td>!} 3% {!</td><td>!} 0 {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div></td><td>!} Other parties: {!</td><td>!} [+ other_r +] % {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#D5AC27'> </div> !} DVP: {!</td><td>!} [+ dvp_r +]% {!</td><td>!} [+ str_change_dvp +] {!</td></tr>!}
+ 
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_r +] % {!</td><td>!} [+ str_change_other +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#3f7bc1'> </div></td><td>!} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#3f7bc1'> </div> !} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#954B00'> </div></td><td>!} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#954B00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td><td>!} [+ str_change_nsdap +] {!</td></tr>!}
 {!</table>!}
 
 = Election history
