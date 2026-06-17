@@ -45,6 +45,13 @@ if (Q.workers_kpd2 < Q.workers_kpd) {
     Q.workers_kpd2 += 5*(1-(Q.nationalism/100));
 }
 
+if (Q.drf_editor_faction != "Left") {
+    Q.workers_kpd -= 6;
+    Q.workers_kpd2 += 6;
+    Q.unemployed_kpd -= 6;
+    Q.unemployed_kpd2 += 6;
+}
+
 Q.workers_kpd *= 0.95;
 Q.unemployed_kpd *= 0.95;
 Q.workers_kpd2 *= 0.95;
