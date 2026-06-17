@@ -64,7 +64,7 @@ Our members grumble at this, and some of the less committed members leave. But n
 
 @change_moscow
 subtitle: Our current arrangements with Moscow provide us with [+ comintern_funding +] resources.
-view-if: moscow_set != 1
+view-if: moscow_set != 1 and comintern_membership
 on-arrival: moscow_set = 1
 
 - @maintain_moscow: Maintain our current Comintern funding.

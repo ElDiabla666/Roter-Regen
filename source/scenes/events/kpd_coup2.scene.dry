@@ -45,6 +45,11 @@ if (Q.workers_kpd2 < Q.workers_kpd) {
     Q.workers_kpd2 += 5*(1-(Q.nationalism/100));
 }
 
+Q.workers_kpd *= 0.95;
+Q.unemployed_kpd *= 0.95;
+Q.workers_kpd2 *= 0.95;
+Q.unemployed_kpd2 *= 0.95;
+
 // update all records
 Q.kpd2_r = Math.floor(Q.kpd_r*(Q.center_strength/100));
 Q.kpd_r -= Q.kpd2_r;

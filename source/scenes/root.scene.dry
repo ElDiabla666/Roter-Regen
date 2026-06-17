@@ -39,6 +39,7 @@ Q.use_decimals = 0;
 Q.resources = 2;
 // party dues
 Q.dues = 1;
+// other party inform
 Q.comintern_funding = 2;
 Q.comintern_relation = 2;
 Q.comintern_membership = 1;
@@ -48,6 +49,8 @@ Q.recruitment_priority = 0.7;
 Q.kpd_votes = 8;
 Q.comintern_line = 2;
 // 1 = offensive theory, 2 = united fronts, 3 = popular fronts
+Q.drf_editor = "Neumann";
+Q.drf_editor_faction = "Center";
 
 // the state of the party
 // overall dissent reduces every increase in party support.
@@ -55,7 +58,7 @@ Q.dissent = 0.05;
 Q.dissent_percent = 5;
 
 // factions
-Q.factions = ['left', 'center', 'labor', 'reformist', 'neorevisionist'];
+Q.factions = ['left', 'center', 'conciliator', 'right', 'neorevisionist'];
 // should this be normalized to 100%?
 Q.left_strength = 15;
 Q.left_dissent = 15;

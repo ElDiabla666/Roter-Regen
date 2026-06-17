@@ -5,15 +5,18 @@ tags: party_affairs
 view-if: media_timer <= 0
 on-arrival: month_actions += 1; media_timer += 6;
 card-image: img/die_rote_fahne.jpg
+go-to: media_options
 #subtitle: Setting the direction for our newspapers and radio.
 
 = Media
 
-The SPD runs a veritable media empire, with many newspapers throughout every German city and region. We could use the media for various purposes...
+The [+ kpd_name +] runs several notable newspapers throughout Germany, most prominently Die Rote Fahne, a central organ of our party, which is currently edited by [+ drf_editor +] of the [+ drf_editor_faction +].
 
-- @commercial
+@media_options
+
 - @campaign
-- @ideological
+- @editor
+- @factional
 - @radio
 - @radio_2
 - @radio_3
@@ -22,26 +25,85 @@ The SPD runs a veritable media empire, with many newspapers throughout every Ger
 - @easy_discard
 - @cancel_advisor_action
 
-@commercial
-title: Make our newspapers more commercialized by broadening their appeal beyond party supporters.
-subtitle: This might upset ideological purists, but it may bring in more funds and perhaps expose the middle class to socialist views.
-on-arrival: resources += 1; commercialized_media += 1; new_middle_spd += 4*(1 - dissent); old_middle_spd += 3*(1-dissent); left_dissent += 10; conciliator_dissent += 10
+@editor
+title: Change the editor of Die Rote Fahne.
+subtitle: This may spark factional conflict.
 
-Our commercialized newspapers are able to bring in more funds. However, the left and labor factions express their displeasure.
+We can change the editor of the newspaper, to align with a different faction within the KPD.
+
+- @left: The left must control the paper.
+- @center: The center must control the paper.
+- @conciliator: The "conciliators" must control the paper.
+- @right: The right must control the paper.
+- @media_options: We won't change it.
+
+@left
+view-if: not left_split and drf_editor_faction != "Left"
+on-arrival: comintern_relation -= 1 if not comintern_line == "1"; left_strength += 5; center_dissent += 10 if drf_editor_faction == "Center"; right_dissent += 10 if drf_editor_faction == "Right"; conciliator_dissent += 10 if drf_editor_faction == "Conciliators"; drf_editor_faction = "Left"; drf_editor = "Maslow";
+
+We place Maslow in control of Die Rote Fahne, bolstering the left and its influence over the party. The removed faction grumbles at its loss of influence.
+
+@center
+view-if: not kpd_split and drf_editor_faction != "Center"
+on-arrival: center_strength += 5; left_dissent += 10 if drf_editor_faction == "Left"; right_dissent += 10 if drf_editor_faction == "Right"; conciliator_dissent += 10 if drf_editor_faction == "Conciliators"; drf_editor_faction = "Center"; drf_editor = "Neumann" if not neumann_purged; drf_editor = "Hirsch" if neumann_purged;
+
+We place [+ drf_editor +] in control of Die Rote Fahne, bolstering the center and its influence over the party. The removed faction grumbles at its loss of influence.
+
+@conciliator
+view-if: not conciliator_split and drf_editor_faction != "Conciliators" and comintern_line == 1
+on-arrival: comintern_relation -= 1 if comintern_line == "1"; conciliator_strength += 5; left_dissent += 10 if drf_editor_faction == "Left"; right_dissent += 10 if drf_editor_faction == "Right"; center_dissent += 10 if drf_editor_faction == "Center"; drf_editor_faction = "Conciliators"; drf_editor = "Meyer" if not meyer_dead; drf_editor = "Eisler" if meyer_dead;
+
+We place [+ drf_editor +] in control of Die Rote Fahne, bolstering the conciliators and their influence over the party. The removed faction grumbles at its loss of influence.
+
+@right
+view-if: not right_split and drf_editor_faction != "Right"
+on-arrival: comintern_relation -= 1; comintern_relation -= 1 if comintern_line == "1"; right_strength += 5; left_dissent += 10 if drf_editor_faction == "Left"; conciliator_dissent += 10 if drf_editor_faction == "Conciliators"; center_dissent += 10 if drf_editor_faction == "Center"; drf_editor_faction = "Right"; drf_editor = "Thalheimer"
+
+We place [+ drf_editor +] in control of Die Rote Fahne, bolstering the party right and their influence over the party. The removed faction grumbles at its loss of influence.
+
+@factional
+title: Support the party line in our polemics.
+subtitle: This will benefit the [+ drf_editor_faction +], as they hold the editorial board.
+on-arrival: workers_kpd -= 1; unemployed_kpd -= 1; {!
+if (Q.drf_editor_faction == "Left") {
+    Q.left_strength += 10;
+    Q.left_dissent -= 10;
+    Q.right_dissent += 5;
+    Q.center_dissent += 5;
+    Q.conciliator_dissent += 5;
+}
+if (Q.drf_editor_faction == "Center") {
+    Q.center_strength += 10;
+    Q.center_dissent -= 10;
+    Q.right_dissent += 5;
+    Q.left_dissent += 5;
+    Q.conciliator_dissent += 5;
+}
+if (Q.drf_editor_faction == "Conciliators") {
+    Q.conciliator_strength += 10;
+    Q.conciliator_dissent -= 10;
+    Q.right_dissent += 5;
+    Q.center_dissent += 5;
+    Q.left_dissent += 5;
+}
+if (Q.drf_editor_faction == "Right") {
+    Q.right_strength += 10;
+    Q.right_dissent -= 10;
+    Q.left_dissent += 5;
+    Q.center_dissent += 5;
+    Q.conciliator_dissent += 5;
+}
+!}
+
+We support the party line as represented by Die Rote Fahne's editorial board, strengthening it significantly within the party. Our opponents accuse us of focusing on factional squabbles, disgruntling them and hurting the party's wider efforts slightly.
+
 
 @campaign
 title: The purpose of our media is to elect more Social Democrats.
 subtitle: Our newspapers will focus on the electoral campaign.
-on-arrival: campaign_media += 1; workers_spd += 4*(1 - dissent); unemployed_spd += 2*(1-dissent);
+on-arrival: campaign_media += 1; workers_kpd += 3*(1 - dissent); unemployed_kpd += 3*(1-dissent);
 
 Our campaign media is mostly reaching the workers who are already saturated with Socialist propaganda, but it must be doing *something*, or at least that is what we hope.
-
-@ideological
-title: We will have vibrant ideological debate within our newspapers.
-subtitle: There will be space for all factions to air their views.
-on-arrival: left_dissent -= 6; conciliator_dissent -= 6; center_dissent -= 6; right_dissent -= 6; neorevisionist_dissent -= 6
-
-This has been our media course historically, and it has successfully paved over the many tensions in our party.
 
 @radio
 title: Why not fund a radio station?
@@ -49,17 +111,16 @@ subtitle: -2 resources
 choose-if: resources >= 2
 unavailable-subtitle: Not enough resources.
 view-if: radio = 0
-on-arrival: radio += 1; resources -= 2; new_middle_spd += 4*(1 - dissent); old_middle_spd += 3*(1 - dissent); workers_spd += 2*(1 - dissent); conciliator_dissent += 5; socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent) if pacifism > 1; pro_republic += 3*(1-dissent) if democratization > 1
+on-arrival: radio += 1; resources -= 2; new_middle_kpd += 2*(1 - dissent); workers_kpd += 2*(1 - dissent); left_dissent += 5; socialism += 2*(1 - dissent); nationalism -= 1*(1 - dissent) if pacifism > 1; pro_republic += 1*(1-dissent) if democratization > 1
 
-Our new radio station allows us to connect to people in a more intimate setting than before, spreading the message of socialism along with music and other popular content. Since most proletarians cannot afford family radios right now, we are reaching the middle class, a fact of which our labor comrades are painfully aware.
+Our new radio station allows us to connect to people in a more intimate setting than before, spreading the message of communism along with music and other popular content. Since most proletarians cannot afford family radios right now, we are reaching the middle class, a fact of which many in our party are criticizing.
 
-@radio_2
 title: We must keep on building up our radio network.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 view-if: radio > 0 and radio <= 3
-on-arrival: radio += 1; resources -= 1; new_middle_spd += 5*(1 - dissent); old_middle_spd += 3*(1 - dissent); workers_spd += 3*(1 - dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 3*(1-dissent)*(democratization-2) if democratization > 2
+on-arrival: radio += 1; resources -= 1; new_middle_kpd += 2*(1 - dissent); workers_kpd += 3*(1 - dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 1*(1-dissent)*(democratization-2) if democratization > 2
 
 Our new radio network has a mix of popular and political programming, and is proving a success.
 
@@ -67,7 +128,7 @@ Our new radio network has a mix of popular and political programming, and is pro
 title: We must keep on building up our radio network.
 subtitle: It is now financially self-sufficient, and does not require any more resources.
 view-if: radio > 3 and radio <= 5 and year <= 1931
-on-arrival: radio += 1; new_middle_spd += 5*(1 - dissent); old_middle_spd += 4*(1 - dissent); workers_spd += 4*(1 - dissent); rural_spd += 3*(1 - dissent); unemployed_spd += 2*(1-dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 3*(1-dissent)*(democratization-2) if democratization > 2
+on-arrival: radio += 1; new_middle_kpd += 3*(1 - dissent); workers_kpd += 4*(1 - dissent); rural_kpd += 2*(1 - dissent); unemployed_kpd += 1*(1-dissent); socialism += 3*(1 - dissent); nationalism -= 3*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 1*(1-dissent)*(democratization-2) if democratization > 2
 
 Our radio network has become a successful tool for spreading our message.
 
@@ -77,6 +138,6 @@ subtitle: As radio becomes more common, the novelty is beginning to wear off, an
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 view-if: radio > 3 and (radio >= 6 or year >= 1932) and radio <= 9
-on-arrival: radio += 1; resources -= 1; new_middle_spd += 3*(1 - dissent); old_middle_spd += 2*(1 - dissent); workers_spd += 3*(1 - dissent); rural_spd += 2*(1 - dissent); unemployed_spd += 2*(1-dissent); socialism += 2*(1 - dissent); nationalism -= 2*(1 - dissent)*(pacifism-2) if pacifism > 2; pro_republic += 2*(1-dissent)*(democratization-2) if democratization > 2
+on-arrival: radio += 1; resources -= 1; new_middle_kpd += 1*(1 - dissent); workers_kpd += 3*(1 - dissent); rural_kpd += 1*(1 - dissent); unemployed_kpd += 1*(1-dissent); socialism += 1*(1 - dissent); nationalism -= 2*(1 - dissent)*(pacifism-2) if pacifism > 2
 
 We are continuing to invest in our radio stations. Both commercial and political radio are becoming more prevalent, making it harder to spread our message amidst the competition.
