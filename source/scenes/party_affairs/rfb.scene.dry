@@ -114,6 +114,11 @@ if (Q.rfb_power > Q.rfb_capacity) {
     Q.rfb_strength *= (0.9+(Q.recruitment_priority/10));
     Q.rfb_militancy *= (0.9+(Q.militancy_priority/10));
 }
+if (Q.rfb_power/Q.rfb_strength > Q.militancy_priority) {
+    Q.rfb_militancy -= Q.recruitment_priority/10;
+    Q.rfb_power_change = Q.rfb_power-(Q.rfb_strength*Q.rfb_militancy);
+    Q.rfb_strength += Q.rfb_power_change;
+}
 
 !}
 
