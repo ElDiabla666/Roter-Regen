@@ -56,7 +56,7 @@ It is not enough for the KPD  to solely be a political party. The Worker Singer'
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; rfb_strength  += 100; rfb_militancy += 0.01; reichsbanner_timer = 0; funded_reichsbanner += 1
+on-arrival: resources -= 1; rfb_strength  += kpd_votes*recruitment_priority; rfb_militancy += 0.01*militancy_priority; reichsbanner_timer = 0; funded_reichsbanner += 1
 
 We have increased recruiting to the Rotfrontkämpferbund.
 
@@ -64,7 +64,7 @@ We have increased recruiting to the Rotfrontkämpferbund.
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; rfb_militancy += 0.05
+on-arrival: resources -= 1; intelligence_funding += 1; rfb_militancy += 0.01; rfb_militancy += 0.01 if rfb_militancy < 0.5; rfb_militancy += 0.01 if rfb_militancy < 0.4; rfb_militancy += 0.01 if rfb_militancy < 0.3; rfb_militancy += 0.01 if rfb_militancy < 0.25
 
 We have increased funding to our Intelligence Service, Der Apparat, this has a knock on effect of improving our Paramilitary's ability to fight, but it will also help us in the secret front against the Republicans and Reactionaries!
 
