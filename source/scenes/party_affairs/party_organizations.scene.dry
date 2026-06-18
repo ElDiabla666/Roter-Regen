@@ -6,17 +6,19 @@ view-if: party_organizations_timer <= 0
 on-arrival: month_actions += 1; party_organizations_timer = 6;
 card-image: img/5_poster.png
 max-visits: 6
-#subtitle: Outside of electoral politics, the SPD runs a social world onto itself.
+#subtitle: The KPD, Communism itself, must become a civilisation, not a party.
 
 = Party Organizations
 
-In addition to being a political party, the SPD is a social world onto itself, with a vast array of associated organizations which serve the social needs of their members from cradle to grave.
+A far cry from a party of goverenence, the KPD is still a state within a state, with various political organisations and shell organisations within and outwith it.
 
-- @newspapers: Fund more newspapers and journalists.
-- @welfare: Fund more mutual aid and welfare programs.
-- @culture: Fund sports leagues, educational, and cultural programs.
-- @rb: Fund the Reichsbanner, our self-defense organization.
+- @newspapers: Fund more newspapers and shell papers.
+- @welfare: Fund more mutual aid and legal aid programs for Communists.
+- @culture: Fund memorial, educational, and cultural programs.
+- @rfb: Fund the Rotfrontkämpferbund, our paramilitary organisation.
+- @apparat : Fund Der Apparat, our intelligence service.
 - @youth: We have the reputation of being a party for old men. Support the youth organizations.
+- @women: Our women's organisation, including Red Women’s Union and RFMB
 - @nothing: Do not increase funding for any program.
 - @easy_discard
 
@@ -34,9 +36,9 @@ go-to: media
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; workers_aid += 1; unemployed_spd += 5*(1 - dissent);
+on-arrival: resources -= 1; workers_aid += 1; unemployed_kpd += 5*(1 - dissent);
 
-We have increased funding to Workers' Welfare. [? if black_thursday_seen > 0 : In an age of economic crisis, this will be helpful for improving our standing among the unemployed. ?]
+We have increased funding to Workers' Welfare. That said, for a party of our size this perhaps seems frivolous, it tightens our connection to the workers, especially the unemployed.
 
 @culture
 choose-if: resources > 0
@@ -44,25 +46,45 @@ unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
 on-arrival: resources -= 1; cultural_organizations += 1; left_dissent -= 6; center_dissent -= 6; conciliator_dissent -= 6; right_dissent -= 6; neorevisionist_dissent -= 6
 
-It is not enough for the SPD to solely be a political party. The Worker Singer's League, Worker's Sports, and our schools and libraries are crucial to our members' lives. Funding these organizations makes our members more committed to the party, even when our policies might not be to their liking.
+#thisshouldprobablyberemovedtheKPDisbrokeashell
+
+It is not enough for the KPD  to solely be a political party. The Worker Singer's League, Worker's Sports, and our schools and libraries are crucial to our members' lives. Funding these organizations makes our members more committed to the party, even when our policies might not be to their liking.
 
 [? if sa_strength > 500 : However, it feels frivolous to spend on sports and choirs when the fascists are murdering us in the streets. ?]
 
-@rb
+@rfb
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; rb_strength  += 100; rb_militancy += 0.01; reichsbanner_timer = 0; funded_reichsbanner += 1
+on-arrival: resources -= 1; rfb_strength  += 100; rfb_militancy += 0.01; reichsbanner_timer = 0; funded_reichsbanner += 1
 
 We have increased recruiting to the Reichsbanner.
+
+@apparat
+choose-if: resources > 0
+unavailable-subtitle: Not enough resources.
+subtitle: -1 resources
+on-arrival: resources -= 1; rfb_militancy += 0.05
+
+We have increased funding to our Intelligence Services, this has a knock on effect of improving our Paramilitary's ability to fight, but it will also help us in the secret front against the Republicans and Reactionaries!
 
 @youth
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; rb_strength += 50; rb_militancy += 0.02; young_socialists += 1; left_strength += 5; neorevisionist_strength += 5; radicalization += 1;
+on-arrival: resources -= 1; rfb_strength += 10; rfb_militancy += 0.02; unemployed_kpd += 1; young_socialists += 1; radicalization += 1;
 
-Our new youth members flock to the left or neorevisionist wings of the party, and also bring new radicalism to the Reichsbanner.
+Our new youth members help invigorate the party, our youth activists are well motivated, zealous and loyal, reducing dissent in the party, they also bring new zeal to the Rotfrontkämpferbund.
+
+@women
+choose-if: resources > 0
+unavailable-subtitle: Not enough resources.
+subtitle: -1 resources
+on-arrival: resources -= 1; rfb_strength += 5; rb_militancy += 0.02; young_socialists += 1; left_strength += 5; neorevisionist_strength += 5; radicalization += 1;
+
+The new RFMB, founded in May of 25, is a good step in gathering support from women. Sadly, the Women of Weimar Germany are woke enough to vote but not woke enough to vote for secular candidates.
+
+#Todo research women more
 
 @nothing
 
