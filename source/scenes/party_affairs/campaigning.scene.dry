@@ -24,7 +24,7 @@ It doesn't really matter if the [ + kpd_name +] is in an electoral campaign righ
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: workers_kpd += 6*(1-dissent); workers_spd -= 2 if unemployed >= 15; workers_spd -= 2 if unemployed >= 25; resources -= 1; workers_kpd += 3*(1-dissent) if nationalization_progress >= 1;
+on-arrival: workers_kpd += 3*(1-dissent); workers_spd -= 2 if unemployed >= 15; workers_spd -= 2 if unemployed >= 25; resources -= 1; workers_kpd += 3*(1-dissent) if nationalization_progress >= 1;
 
 We have increased our campaigning among the workers. [? if unemployed >= 15: The high levels of unemployment make our campaign more efficient, bolstering it in comparison to the Social Democrats. ?]
 
@@ -32,7 +32,7 @@ We have increased our campaigning among the workers. [? if unemployed >= 15: The
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: new_middle_kpd += 3*(1-dissent); new_middle_kpd -= 3 if socialism <= 49; resources -= 1
+on-arrival: new_middle_kpd += 1*(1-dissent); new_middle_kpd -= 1 if socialism <= 49; resources -= 1
 
 We have increased our campaigning among the new middle class. While technically proletarian, its position in German society has made it traditionally averse to radicalism. [? if socialism <= 49 : The popular antipathy towards socialism among this group makes our campaign impossible. ?]
 
@@ -50,7 +50,7 @@ We have increased our campaigning among the old middle class.
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: rural_kpd += 4*(1-dissent); rural_kpd -= 3*(1-dissent) if land_reform == 0; resources -= 1; rural_kpd += 3*(1-dissent) if rural_policy >= 2
+on-arrival: rural_kpd += 2*(1-dissent); rural_kpd -= 2*(1-dissent) if land_reform == 0; resources -= 1; rural_kpd += 1*(1-dissent) if rural_policy >= 2
 
 We have increased our campaigning among farmers, primarily the rural workers, who are proletarians isolated from the urban networks that make class consciousness easily attainable, rather than fully petty-bourgeois producers. [? if rural_policy >= 2 : Our rural policies have made it easier for us to build support among farmers. ?]
 
@@ -58,7 +58,7 @@ We have increased our campaigning among farmers, primarily the rural workers, wh
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: unemployed_kpd += 6*(1-dissent); resources -= 1; unemployed_spd -= 3 if welfare < 0; 
+on-arrival: unemployed_kpd += 6*(1-dissent); unemployed_kpd += (rfb_strength/20)*(1-dissent); resources -= 1; unemployed_kpd += 3*(1-dissent) if welfare < 0; unemployed_kpd += 3*(1-dissent) if unemployed >= 25
 
 We have increased our campaigning among the unemployed. [? if welfare < 0: The welfare cuts and resultant poverty make our campaign more efficient, since we are associated with the opposition that fought these cuts. ?]
 
