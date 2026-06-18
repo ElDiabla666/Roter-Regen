@@ -58,7 +58,7 @@ unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
 on-arrival: resources -= 1; rfb_strength  += 100; rfb_militancy += 0.01; reichsbanner_timer = 0; funded_reichsbanner += 1
 
-We have increased recruiting to the Reichsbanner.
+We have increased recruiting to the Rotfrontkämpferbund.
 
 @apparat
 choose-if: resources > 0
@@ -66,7 +66,7 @@ unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
 on-arrival: resources -= 1; rfb_militancy += 0.05
 
-We have increased funding to our Intelligence Services, this has a knock on effect of improving our Paramilitary's ability to fight, but it will also help us in the secret front against the Republicans and Reactionaries!
+We have increased funding to our Intelligence Service, Der Apparat, this has a knock on effect of improving our Paramilitary's ability to fight, but it will also help us in the secret front against the Republicans and Reactionaries!
 
 @youth
 choose-if: resources > 0
