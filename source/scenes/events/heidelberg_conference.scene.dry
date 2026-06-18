@@ -17,7 +17,7 @@ Another issue is that of Saxony, where the regional party organization has split
 - @heidelberg: The party adopts the Heidelberg program.
 
 @heidelberg
-on-arrival: heidelberg_program = 1; center_strength += 5; right_strength -= 5; left_dissent -= 5; center_dissent -= 10; right_dissent += 5; dvp_relation -= 5; spd_relation += 5
+on-arrival: heidelberg_program = 1; spd_relation += 5; workers_spd += 6; left_strength -= 5; socialism += 2; workers_dnvp -= 3
 go-to: coalition_issue
 
 The party has adopted the Heidelberg program, written by Karl Kautsky of the party center and representing a return towards the party's Marxist roots. 
@@ -26,18 +26,20 @@ The party has adopted the Heidelberg program, written by Karl Kautsky of the par
 
 Max Seydewitz of the left meanwhile has proposed before the conference what would amount to a rejection of coalitions with the bourgeois parties in order to represent the interests of the proletariat in all future struggles without regard to their opinions.
 
-- @seydewitz: The motion is passed by the conference.
+- @seydewitz: Influence the SPD to pass the motion.
 - @silly: The motion is defeated by the conference.
 
 @seydewitz
-view-if: spd_relation >= 50
-on-arrival: left_strength += 20; right_strength -= 10; right_dissent += 25; center_dissent += 10; conciliator_dissent += ((z_relation+dvp_relation)/10); marx_relation -= 10; z_relation -= 15; dvp_relation -= 15; ddp_relation -= 15; spd_relation += 10; communist_coalition += 1
+choose-if: spd_relation >= 50
+subtitle: The SPD swings to the left!
+unavailable-subtitle: The SPD are too caught up in their reformist ways.
+on-arrival: z_relation -= 5; spd_relation += 10; communist_coalition += 1; conciliator_strength += 10; right_strength += 1; left_strength -= 5
 #go-to: saxon_struggle
 
 Surprisingly, the motion to reject cooperation with the bourgeoisie is passed through the conference. The party's right wing is incensed by this decision, with some even threatening revolt.
 
 @silly
-on-arrival: right_dissent -= 5; left_dissent += 5
+on-arrival: left_strength += 2; right_strength -= 2
 #go-to: saxon_struggle
 
 As expected, the motion is defeated. The party remains too attached to the Weimar Coalition for such a move to be feasible.
