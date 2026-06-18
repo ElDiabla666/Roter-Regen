@@ -18,7 +18,7 @@ Now, new presidential elections have been scheduled. It is expected that a wide 
 
 @back_thalmann
 subtitle: This is really the only option.
-on-arrival: thalmann_percent = 0.7; braun_campaign = 1
+on-arrival: thalmann_percent = 0.7; braun_campaign = 1; workers_spd += 5; pro_republic += 3
 go-to: ct2
 
 We back Ernst Thälmann, who, while not being very well known at this point outside of Hamburg, has nonetheless proven a faithful and dedicated organizer. The SPD backs Otto Braun after Paul Löbe refuses to run, while the DVP and DNVP run Karl Jarres as the "Reichsblock" candidate. The Center Party has run Wilhelm Marx, their party leader, while the BVP, unwilling to commit to any of the main candidates, has run Heinrich Held. The DDP is running Willy Hellpach and meanwhile, the recently reformed, self declared, "National Socialists" are backing Ludendorff.
@@ -33,7 +33,7 @@ We back Ernst Thälmann, who, while not being very well known at this point outs
 subtitle: -2 resources
 choose-if: resources >= 2
 view-if: thalmann_percent <= 0.7
-on-arrival: resources -= 2; thalmann_percent += 0.3;
+on-arrival: resources -= 2; thalmann_percent += 0.3
 go-to: ct2
 max-visits: 1
 

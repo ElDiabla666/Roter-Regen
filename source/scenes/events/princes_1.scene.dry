@@ -1,30 +1,74 @@
-title: Expropriation of the Princes
-subtitle: Disputes arise over the status of princely lands
+title: The Question of Princely Property
+subtitle: The DDP has proposed a law to allow states to regulate property disputes with former princes
 view-if: (year == 1925 and month >= 12) or year == 1926
-on-arrival: workers_kpd += 5; unemployed_kpd += 2
 tags: event
 max-visits: 1
 new-page: true
 
-= Expropriation of the Princes
+= The Question of Princely Property
 
-As the economy worsens and the Communists search for ways to revitalize their movement after the embarassing result of [+ thalmann_votes_disp +]% in March, they attempt to capitalize on the current debate over the status of princely lands, and have submitted a bill for the expropriation without compensation.
+Recently, disputes have sparked on the topic of the princely lands, and what is to be done about them. This comes after, in Prussia, the SPD's treacherous bourgeois allies sought to make a deal with the Hohenzollerns which would return to them three quarters of their property. With this being too reactionary for even the DDP to handle, they have overriden this, and, seeking to break the deadlock, taken the issue to the Reichstag; here, they place forward their proposal to allow state Landtags to pass laws for the settling of disputes with the princely houses.
 
-The DDP, meanwhile, has also submitted a bill on the matter, which would empower state Landtags to pass laws for the settling of disputes with the former princely houses. This, as opposed to the communist proposal, may stand a chance of approval in Reichstag; the KPD has no illusions of the Reichstag accepting the bill, and have already begun preparing a referendum, and have even invited us to help organize it, likely expecting a refusal so as to paint us as puppets of the bourgeois.
+Despite its gross inadequacy, the SPD is in favor. However, some in our party believe this would be a good opportunity to [? if kpd_party_leader == "Thälmann" : put the united front policy into action and agitate alongside their base for a better law ?][? if kpd_party_leader = "Fischer" : militantly agitate for uncompromising expropriation, and against the SPD. ?] This opportunity is strengthened by the declining state of the economy, with our support already poised to rise sharply this winter.
 
-At the same time, if we joined the initiative for referendum we would risk alienating our bourgeois parties, and certainly eliminate the chance of a Grand Coalition succeeding the Luther cabinet.
+- @expropriation: Submit a counterproposal, for expropriation without compensation.
 
-- @early_initiative: Withdraw from coalition talks, and join the communist initiative.
-- @historical_one: Back the DDP's proposal for the time being.
+@expropriation
+subtitle: This has little to no chance of passing. However, perhaps we could take it to referendum?
+on-arrival: workers_kpd += 1
 
-@early_initiative
-choose-if: left_strength > right_strength
-unavailable-subtitle: The majority of the party is skeptical.
-on-arrival: princes_time = time+2; princes_initiated = 1; right_dissent += 5; spd_relation += 5; dvp_relation -= 5; new_middle_spd -= 3; old_middle_spd -= 3; catholics_spd -= 1; marx_relation -= 5
+We put forward our proposal, for uncompensated expropriations of the assets of former princes, distributing them to farmers and tenants while converting castles into convalescent homes and distributing monetary assets to war invalids. Such an idea has sympathies even amongst the middle class; hyperinflation is still fresh on the minds of many petty-bourgeois producers and labour-aristocrats, and this hyperinflation had demonstrated the special value of these immovable assets we are promising. Our hope is not that the Reichstag will vote in favor of this law, being the bourgeois puppet chamber that it is, but that the workers of Germany will hear our promises, and hear them with hope.
 
-We surprise the bourgeois and party right by effectively withdrawing from coalition talks to focus on opposition politics through the backing of a referendum for the expropriation without compensation of the princes. Though there is no way we could directly back the communist suggestion, the ADGB has mediated a bill that both parties are able to agree on, and preparations for referendum are underway.
+- @launch_referendum: We should take our promises further; let us launch a referendum.
+- @nah: We're good bro.
 
-@historical_one
-on-arrival: ddp_relation += 5; dvp_relation += 2; z_relation += 2; workers_spd -= 5; unemployed_spd -= 2
+@launch_referendum
+on-arrival: princes_initiated = 1
+subtitle: Actually mobilizing turnout will require quite the hefty campaigning.
 
-The greater priority in the present moment is to entertain this potential Grand Coalition. We must not burn bridges by throwing our lot in with the far-left.
+We will take our law proposal out of the hallowed chambers of the Reichstag and into the streets, where the issues it legislates on are lived and felt by the workers each and every day. 
+
+Now there is the matter of preparing a referendum; the strategy of the united front would suggest we invite the Social Democrats through their affiliate groups to help organize the referendum through our front organizations, demonstrating ourselves to their supporters to be the most dedicated proponents of their interests and, in the case of a refusal, perhaps driving a wedge between them and their labour-aristocratic leadership.
+
+However, some fear that the Social Democrats would dilute the class character of the referendum, and detract from an uncompromising workers' and revolutionary agenda. Further, if the Social Democrats were part of the campaign, it might minimize the extent to which we can gain through it.
+
+- @united_front: We will invite the Social Democrats to join us in our referendum.
+- @solo: Our referendum is our's alone!
+
+@united_front
+subtitle: The Comintern endorses this course.
+choose-if: not kpd_split and left_strength < 50
+unavailable-subtitle: We don't need those fat cats.
+on-arrival: comintern_relation += 1; spd_relation += 3; workers_spd -= 2; spd_invited = 1; left_dissent += 5; left_dissent += 10 if kpd_party_leader == "Fischer"; left_strength -= 5
+go-to: spd_refusal if not spd_dogma; spd_acceptance if spd_dogma
+
+@spd_refusal
+
+Unfortunately, the SPD does not react positively to our outreach. For now, they seem more concerned with the possibility of entering government, given the ongoing negotiations, and still believe foolishly that the Reichstag may resolve this issue.
+
+[? if spd_relation >= 50 or dropped_out : However, this decision is protested by many on the party's left-flank, which seems stronger than it has been in a while. It may be that they will abandon this course. ?]
+
+[? if kpd_party_leader == "Fischer" : Meanwhile, the leadership of our own party is opposing this decision, though not especially strongly due to being generally weakened in comparison to other factions. ?]
+
+@spd_acceptance
+on-arrival: princes_time = time+2; workers_spd += 2; z_relation -= 5; new_middle_spd -= 3; old_middle_spd -= 3; catholics_spd -= 1; spd_relation += 5
+
+Surprisingly, the Social Democrats agree to join the referendum, withdrawing from government talks with the bourgeoisie! This is credited with their recent categoric rejection of coalitionism, and a massive stride in the creation of a true united front.
+
+However, they still cannot agree to the full breadth of our proposal, instead requesting the ADGB mediate one. Nevertheless, this is a great advancement in our relations, though it is not clear if they will agree to conduct their campaigning with us as a true united front yet.
+
+[? if kpd_party_leader == "Fischer" : Meanwhile, the leadership of our own party is opposing this decision, though not especially strongly due to being generally weakened in comparison to other factions. ?]
+
+@solo
+subtitle: [? if comintern_membership : The Comintern condemns this course. ?]
+choose-if: not comintern_membership or kpd_party_leader == "Fischer" or left_strength > spd_relation
+unavailable-subtitle: Now is no time to be sectarian and isolate ourselves from the masses.
+on-arrival: comintern_relation -= 1; spd_relation -= 3; left_strength += 10; rfb_strength += 10; rfb_militancy += 0.05; center_dissent += 5; right_dissent += 5; conciliator_dissent += 5
+
+We choose not to invite the Social Democrats, for fear that they would simply dilute our initiative, and instead maintain a full and unapolagetic communist programme for the referendum. Many fear that by doing this, we are simply isolating ourselves from the working masses.
+
+@nah
+on-arrival: conciliator_dissent += 5; right_dissent += 5; center_dissent += 5; workers_spd -= 1; workers_kpd += 1; unemployed_spd -= 1; unemployed_kpd += 1
+
+The law is voted down, and we blame the Social Democrats. We gain some support, but the whole ordeal leaves the realm of our influence, and becomes a matter to be negotiated in the coming months behind closed doors by bourgeois officials. Many in our party feel that there was more we could have done.
+

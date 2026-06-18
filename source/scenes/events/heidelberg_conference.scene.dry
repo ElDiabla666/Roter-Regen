@@ -33,7 +33,7 @@ Max Seydewitz of the left meanwhile has proposed before the conference what woul
 choose-if: spd_relation >= 50
 subtitle: The SPD swings to the left!
 unavailable-subtitle: The SPD are too caught up in their reformist ways.
-on-arrival: z_relation -= 5; spd_relation += 10; communist_coalition += 1; conciliator_strength += 10; right_strength += 1; left_strength -= 5
+on-arrival: z_relation -= 5; spd_relation += 10; communist_coalition += 1; conciliator_strength += 10; right_strength += 1; left_strength -= 5; spd_dogma = 1
 #go-to: saxon_struggle
 
 Surprisingly, the motion to reject cooperation with the bourgeoisie is passed through the conference. The party's right wing is incensed by this decision, with some even threatening revolt.
