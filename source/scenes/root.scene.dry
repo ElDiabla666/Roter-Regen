@@ -59,7 +59,7 @@ Q.dissent = 0.05;
 Q.dissent_percent = 5;
 
 // factions
-Q.factions = ['left', 'center', 'conciliator', 'right', 'neorevisionist'];
+Q.factions = ['left', 'center', 'conciliator', 'right'];
 // should this be normalized to 100%?
 Q.left_strength = 60;
 Q.left_dissent = 5;
