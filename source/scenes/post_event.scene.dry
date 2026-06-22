@@ -302,6 +302,11 @@ if (Q.month_actions >= 1) {
         // the more internationalist people are, the more they value an international comintern movement? yeah, it's a bit silly and spurious, but in the absence of a better variable to determine how popular affiliation with the comintern is, i'll use this as a stand-in
     }
 
+    Q.leadership_strength = 0;
+    for (var f of Q.factions) {
+       Q.leadership_strength += Q[f+'_strength'];
+    }
+
     ////////////////////////// annual support changes
     if (Q.year < 1928 && Q.president != "Ebert") {
         Q.sa_strength += 50/36;
