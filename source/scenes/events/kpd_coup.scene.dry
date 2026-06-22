@@ -13,7 +13,7 @@ We have received word from Moscow that Stalin wishes to meet with Ruth Fischer. 
 - @hell_no: Something is amiss. Ruth Fischer must stay here.
 
 @go_to_moscow
-on-arrival: left_dissent -= 5; left_strength -= 15; center_strength += 10; kpd_party_leader = "Thälmann"; leading_faction = "Center"; comintern_relation += 1
+on-arrival: left_dissent -= 5; left_strength -= 15; center_strength += 10; kpd_party_leader = "Thälmann"; leading_faction = "Center"; comintern_relation += 1; left_leadership = 0; center_leadership = 1
 
 Upon arrival in Moscow, Ruth Fischer is effectively detained in Hotel Lux, and prevented from returning to Germany, allowing Ernst Thälmann to assume leadership of the party following his distancing himself from Maslow and Fischer.
 
@@ -21,11 +21,13 @@ Upon arrival in Moscow, Ruth Fischer is effectively detained in Hotel Lux, and p
 - @status_quo: Now, we won't change our policy *that* much...
 
 @united_front
-on-arrival: left_dissent += 10; left_strength -= 5; spd_relation += 5; comintern_relation += 2
+subtitle: Thälmann will lead with the conciliatory middle group.
+on-arrival: left_dissent += 10; left_strength -= 5; spd_relation += 5; comintern_relation += 2; conciliator_leadership = 1
 
 We reaffirm now the Comintern line of united fronts, and condemn Fischer and Maslow's deviations from this line as ultraleftist ones. The left is alienated by Thälmann's shift to the right.
 
 @status_quo
+subtitle: Thälmann will not stray too far to the right.
 on-arrival: center_dissent += 5; left_strength += 5; comintern_relation -= 1
 
 Just because we have removed two clearly unreliable politicians from power does not mean we must reinvent ourselves. The crux of our strategy remains unchanged.

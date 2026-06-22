@@ -14,7 +14,7 @@ Following Ruth Fischer's refusal to travel to Moscow, the Comintern was forced t
 
 @coup
 view-if: center_strength*((comintern_funding+1)/(resource_gain+1)) >= left_strength
-on-arrival: left_dissent += 50; left_strength -= 25; center_strength += 15; right_strength += 5; kpd_party_leader = "Thälmann"; leading_faction = "Center"; comintern_relation += 4; left_split = 1; workers_kpd -= 3; unemployed_kpd -= 3
+on-arrival: left_dissent += 50; left_strength -= 25; center_strength += 15; right_strength += 5; kpd_party_leader = "Thälmann"; leading_faction = "Center"; left_leadership = 0; center_leadership = 1; conciliator_leadership = 1; comintern_relation += 4; left_split = 1; workers_kpd -= 3; unemployed_kpd -= 3
 
 Ruth Fischer, having lost the support of both the Comintern and the party bureaucracy, has been removed from leadership, and is shortly thereafter expelled from the party, going on to form a dissident "Leninbund".
 

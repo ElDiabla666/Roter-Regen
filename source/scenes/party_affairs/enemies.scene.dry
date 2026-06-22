@@ -17,34 +17,42 @@ In our media and campaign materials, who should we consider as our main opponent
 - @far_right: The reactionaries - the NSDAP and DNVP.
 - @nsdap: The NSDAP alone.
 - @spd: The SPD.
-- @bourgeois: The bourgeois parties - the Center and DVP.
+- @bourgeois: The bourgeois parties - the Center and DVP, and the reactionaries they enable.
 - @easy_discard
 
 @establishment
 subtitle: [? if comintern_line == 1 : The Comintern approves of this course. ?][? if comintern_line == 3 : The Comintern disapproves of this course. ?]
-on-arrival: enemies = "establishment"; workers_kpd -= 2; workers_spd -= 2; workers_z -= 2; spd_relation -= 10; comintern_relation += 1 if comintern_line == 1; comintern_relation -= 1 if comintern_line == 3
+on-arrival: enemies = "establishment"; workers_kpd += 2; workers_spd -= 2; workers_z -= 2; spd_relation -= 10; comintern_relation += 1 if comintern_line == 1 and enemies != "establishment"; comintern_relation -= 1 if comintern_line == 3
+choose-if: leadership_strength >= 50 or (left_strength+center_strength >= (50+(conciliator_strength*(conciliator_dissent/100))+(right_strength*(right_dissent/100))))
+unavailable-subtitle: Our precarious leadership is unable to muster support for this.
 
 Attacking the establishment is popular among the left wing of our party, who consider the need for a revolutionary offensive in Germany. This might also hamper our ability to reconcile with the SPD in the future.
 
 @far_right
 subtitle: [? if comintern_line == 3 : The Comintern approves of this course. ?]
-on-arrival: enemies = "far right"; workers_nsdap -= 3; workers_dnvp -= 3; comintern_relation += 1 if comintern_line == 3
+choose-if: leadership_strength >= 50 or (right_strength+center_strength+conciliator_strength >= (50+(left_strength*(left_dissent/200))))
+on-arrival: enemies = "far right"; workers_nsdap -= 3; workers_dnvp -= 3; comintern_relation += 1 if comintern_line == 3 and enemies != "far right"
+unavailable-subtitle: Our precarious leadership is unable to muster support for this.
 
 Attacking the far right is popular among the entire party, although the left considers the establishment republican parties to be just as dangerous.
 
 @nsdap
+choose-if: leadership_strength >= 50 or (right_strength+center_strength+conciliator_strength >= (50+(left_strength*(left_dissent/200))))
+unavailable-subtitle: Our precarious leadership is unable to muster support for this.
 on-arrival: enemies = "NSDAP"; nazi_urgency += 1; workers_nsdap -= 4;
 
 [? if nazi_urgency == 0 or nsdap_r < 10 : The NSDAP is a tiny party right now, with more bark than bite. Many in our party are questioning our choices. ?][? if nazi_urgency > 0 and nsdap_r >= 10 : The Nazis are the most urgent problem for us to deal with. ?]
 
 @spd
+choose-if: leadership_strength >= 50 or (left_strength >= (50+(conciliator_strength*(conciliator_dissent/100))+(right_strength*(right_dissent/100)))+(center_strength*(center_dissent/200)))
+unavailable-subtitle: Our precarious leadership is unable to muster support for this.
 subtitle: [? if comintern_line == 1 : The Comintern approves of this course. ?][? if comintern_line >= 2 : The Comintern disapproves of this course. ?]
-on-arrival: enemies = "SPD"; spd_relation -= 15; workers_spd -= 4; comintern_relation += 1 if comintern_line == 1; comintern_relation -= 1 if comintern_line >= 2
+on-arrival: enemies = "SPD"; spd_relation -= 15; workers_spd -= 4; comintern_relation += 1 if comintern_line == 1 and enemies != "SPD"; comintern_relation -= 1 if comintern_line >= 2
 
 Attacking the SPD is supported by the most left wing communists. However, if we are to reconcile with the SPD, this may not be the best choice.
 
 @bourgeois
 subtitle: [? if comintern_line == 2 : The Comintern approves of this course. ?]
-on-arrival: enemies = "bourgeois parties"; z_relation -= 5; spd_relation -= 5 if spd_in_government; workers_z -= 3; comintern_relation += 1 if comintern_line == 2
+on-arrival: enemies = "bourgeois parties"; z_relation -= 5; spd_relation -= 5 if spd_in_government; workers_z -= 3; workers_dnvp -= 2; workers_nsdap -= 1 if workers_nsdap >= 10; comintern_relation += 1 if comintern_line == 2 and enemies != "bourgeois parties"
 
 Our anti-bourgeois rhetoric is popular among the left, but may make it harder to build the coalitions that are necessary for government in the future.
