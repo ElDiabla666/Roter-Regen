@@ -25,7 +25,7 @@ KPD position: [? if kpd_toleration : toleration ?][? if kpd_in_government : in g
 
 Internal dissent: [+ dissent_percent : dissent +]
 
-Party Leader: [+ kpd_party_leader +] ([+ leading_faction +])
+Party Leader: [+ kpd_party_leader +] ([+ leading_faction +]) - [? if leadership_strength < 50 : Precarious control ?][? if leadership_strength >= 50 : Stable control ?]
 
 = Government
 
