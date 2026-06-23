@@ -10,14 +10,36 @@ go-to: pres_menu
 
 The dog, President Friedrich Ebert, has passed away at age 54 after delaying treatment for illness in order to defend his legacy in the bourgeois courts from the same reactionaries which he allowed to regrow like parasites, all in the name of massacring the German Revolution. Notwithstanding, the dog's death means there is merely uncertainty in the republic's future, though it unfortunately seems unlikely that any other than the bourgeois right will be able to capitalise on this uncertainty.
 
-Now, new presidential elections have been scheduled. It is expected that a wide variety of candidates will enter the race, at least in the first round. It seems natural that we would do so as well, to campaign and motivate the base.
+Now, new presidential elections have been scheduled. It is expected that a wide variety of candidates will enter the race, at least in the first round. It seems natural that we would do so as well, to campaign and motivate the base. [? if maslow_rebuked : Arkadi Maslow, however, after Stalin's rebuking of his disdain for the right, seems eager to adjust his position, and has proposed carrying out the united front, even in the first round. ?]
 
 @pres_menu
 
+- @back_braun: We should endorse Otto Braun for a full united front!
 - @back_thalmann: We will run Comrade Deputy Chairman Ernst Thälmann of the RFB.
 
+@back_braun
+subtitle: Arkadi Maslow puts forward an unorthodox proposal...
+view-if: maslow_rebuked
+on-arrival: left_strength -= 10; left_dissent += 5; conciliator_strength += 5; braun_considered = 1; spd_relation += 5
+
+Maslow, following Stalin's response to his letter in February, has become an advocate himself for united fronts now in Germany, going so far as to suggest that even the Center Party could prove a good bulwark against reaction. To demonstrate this new conviction, he believes we should not run Thälmann, and instead offer our support to Otto Braun, even in the first round where there are no stakes to running. Thälmann himself is quite offended at the proposal, while the broader left has turned on Maslow for his perceived opportunism, creating large rifts within the leadership.
+
+- @back_braun_for_real: With the support of the right, his proposal is pushed through!
+- @back_thalmann: We will back Comrade Deputy Chairman Ernst Thälmann of the RFB, after all.
+
+@back_braun_for_real
+choose-if: conciliator_strength+right_strength >= (50+(left_strength*(left_dissent/100)));
+unavailable-subtitle: Maslow is outvoted.
+on-arrival: thalmann_campaign = 0; kpd_support_braun = 1; left_dissent += 15; center_dissent += 5; thalmann_percent = 0.4; spd_relation += 10; braun_backed = 1
+
+Surprisingly, his proposal is pushed through! The candidacy of Thälmann is overridden as we reach out to the SPD for an endorsement to Braun instead. Albeit reluctantly and with surprise, our overtures are accepted.
+
+- @round1: Let the voting begin...
+
+## todo: SPD refuses endorsement? 
+
 @back_thalmann
-subtitle: This is really the only option.
+subtitle: [? if braun_considered or not maslow_rebuked : This is really the only option. ?][? if not braun_considered and maslow_rebuked : The most natural course, by far. ?]
 on-arrival: thalmann_percent = 0.7; braun_campaign = 1; workers_spd += 5; pro_republic += 3
 go-to: ct2
 
@@ -88,6 +110,11 @@ if (Q.braun_campaign) {
             Q.braun_percent = Math.max(Q.braun_percent, 1);
         }
     }
+    if (Q.kpd_support_braun) {
+        var kpd_percent = (thalmann_percent+(Q.spd_relation/100))/2;
+        Q.braun_votes += Q.kpd_normalized*kpd_percent;
+        Q.braun_votes += Q.socialism/2500;
+    }
     Q.braun_votes += Q.spd_normalized*Q.braun_percent;
     Q.braun_votes += Q.socialism/2750;
     Q.braun_votes += Q.pro_republic/2000;
@@ -133,8 +160,12 @@ if (Q.marx_campaign) {
     }
     Q.marx_votes += Q.pro_republic/2750;
     if (Q.spd_support_marx) {
-        var left_dissent_percent = (Q.left_strength*(1+(Q.left_dissent/100)))/100;
-        Q.marx_votes += (Q.spd_normalized*(1-(left_dissent_percent*(Q.pro_republic/100))))*Q.braun_percent;
+        var left_dissent_percent = 0.2;
+        left_dissent_percent *= ((100-Q.spd_relation)/100);
+        if (!Q.thalmann_campaign) {
+            left_dissent_percent *= 0.5;
+        }
+        Q.marx_votes += (Q.spd_normalized*(1-(left_dissent_percent*((100-Q.pro_republic)/100))))*Q.braun_percent;
         Q.marx_votes += Q.pro_republic/4500;
     }
     if (Q.ddp_support_marx) {
@@ -266,12 +297,41 @@ Otto Gessler has won the election as the candidate of the democratic parties, in
 
 @no_majority_round1
 on-arrival: hellpach_campaign = 0; ddp_support_marx = 1; thalmann_percent += 0.1 if thalmann_percent <= 0.9; thalmann_percent = 1 if thalmann_percent > 0.9
+go-to: thalmann_round_2 if thalmann_campaign; braun_round_2 if not thalmann_campaign
 
 As expected, there is no majority in the first round of voting.
+
+@thalmann_round_2
 
 Thälmann has landed [+ thalmann_votes_disp +]% of the vote in the first round. [? if thalmann_votes_disp < kpd_r : We have fallen in voteshare since the last Reichstag election, a disappointing sign. ?][? if thalmann_votes_disp >= kpd_r : We have won more votes than at the last Reichstag elections, a promising sign. ?] 
 
 - @hindenburg_enters: How is the second round shaping up?
+
+@braun_round_2
+
+Braun has landed [+ braun_votes_disp +]% of the vote in the first round. [? if braun_votes_disp < kpd_r+spd_r : Together, the socialist parties have fallen in voteshare since the last Reichstag, a disappointing sign. ?][? if braun_votes_disp >= kpd_r+spd_r : Together, the socialist parties are on the rise since the last Reichstag elections, a promising sign. ?]
+
+Plans for the second round are disrupted, however, when we receive news of the entry of Paul Ludwig Hans Anton von Beneckendorff und von Hindenburg into the race. As his long name and the particular use of Von may suggest, he is an aristocratic animal of the Duchy of Posen. He was a field marshal of the German Army in the slaughter of 1914-18 and a faithful butcher of the German Army for five decades and three conflicts with one great war. It is not so surprising then to reveal that he is a Royalist, who would rather the Kaiser back on the throne, in fact he had asked for the Kaiser’s permission to run twice before! There’s also reports of this dogs possible dealings with one *Adolf Hitler* from the so-called Beer Hall Putsch a few years ago, his associate Ludendorff had partook in it, though he himself called for unity at times of crises.
+
+- @spd_to_marx: The SPD withdraws Braun, leaving us without a candidate.
+- @spd_stays: The SPD will continue to support Braun in the second round.
+
+@spd_to_marx
+view-if: spd_relation < 50
+on-arrival: spd_relation -= 5; left_strength += 5; left_dissent += 15; center_strength += 10; comintern_relation -= 1; workers_kpd -= 5; unemployed_kpd -= 5; workers_spd += 5; unemployed_spd += 5; braun_percent -= 0.1; held_campaign = 0; spd_support_marx = 1; braun_campaign = 0; jarres_campaign = 0; ludendorff_campaign = 0; dvp_support_hindenburg = 1; hindenburg_campaign = 1; bvp_support_hindenburg = 1 if z_relation < 20 and spd_support_marx; bvp_support_marx = 1 if z_relation > 20 or not spd_support_marx; nationalism += 5
+
+With the SPD withdrawing Braun to back Wilhelm Marx, in order to prevent an election of Paul von Hindenburg, we are left without a clear candidate. The affair undermines our credibility, and the Comintern condemns our poor conduct in the elections. 
+
+- @drop_out: We will stay out of the second round, then.
+- @stay: We will re-enter Thälmann!
+
+@spd_stays
+view-if: spd_relation >= 50
+on-arrival: spd_relation += 5; held_campaign = 0; jarres_campaign = 0; ludendorff_campaign = 0; dvp_support_hindenburg = 1; hindenburg_campaign = 1; bvp_support_marx = 1; nationalism += 5
+
+The SPD determines not to consolidate with the intransingient bourgeoisie, and instead stay in the race with our backing! 
+
+- @round1: Let the voting begin...
 
 @no_hindenburg
 on-arrival: held_campaign = 0; ludendorff_campaign = 0; bvp_support_jarres = 1
@@ -281,7 +341,7 @@ todo
 @hindenburg_enters
 on-arrival: held_campaign = 0; spd_support_marx = 1; braun_campaign = 0; jarres_campaign = 0; ludendorff_campaign = 0; dvp_support_hindenburg = 1; hindenburg_campaign = 1; bvp_support_hindenburg = 1 if z_relation < 20 and spd_support_marx; bvp_support_marx = 1 if z_relation > 20 or not spd_support_marx; nationalism += 5
 
-Expectedly, the Weimar establishment consolidates into a **Volksblock** backing Wilhelm Marx. Shortly thereafter, we receive news of the entry of Paul Ludwig Hans Anton von Beneckendorff und von Hindenburg into the race. As his long name and the particular use of Von may suggest, he is an aristocratic animal of the Duchy of Posen. He was a field marshal of the German Army in the slaughter of 1914-18 and a faithful butcher of the German Army for five decades and three conflicts with one great war. It is not so surprising then to reveal that he is a Royalist, who would rather the Kaiser back on the throne, in fact he had asked for the Kaiser’s permission to run twice before! There’s also reports of this dogs possible dealings with one *Adolf Hitler* from the so-called Beer Hall Putsch a few years ago, his associate Ludendorff had partook in it, though he himself called for unity at times of crises.
+Unfortunately, the Weimar establishment consolidates into a **Volksblock** backing Wilhelm Marx, preempting considerations that we might back Braun in the second round, considerations in line with the globally dominant doctrine of united frontism, and considerations many were prepared to act on. Shortly thereafter, we receive news of the entry of Paul Ludwig Hans Anton von Beneckendorff und von Hindenburg into the race. As his long name and the particular use of Von may suggest, he is an aristocratic animal of the Duchy of Posen. He was a field marshal of the German Army in the slaughter of 1914-18 and a faithful butcher of the German Army for five decades and three conflicts with one great war. It is not so surprising then to reveal that he is a Royalist, who would rather the Kaiser back on the throne, in fact he had asked for the Kaiser’s permission to run twice before! There’s also reports of this dogs possible dealings with one *Adolf Hitler* from the so-called Beer Hall Putsch a few years ago, his associate Ludendorff had partook in it, though he himself called for unity at times of crises.
 
 Besides that, he has received the backing of the DVP, the DNVP[? if bvp_support_hindenburg :, the BVP?], said **Herr Hitler**’s NSDAP, and the various minor parties of the center-right. With this in mind, and the fact that a victory for Thälmann is plainly impossible, the Executive Committee of the Comintern has instructed us to drop out in the second round.
 
@@ -290,10 +350,10 @@ Besides that, he has received the backing of the DVP, the DNVP[? if bvp_support_
 
 @stay
 subtitle: This would be in defiance of the Comintern - "It is not the task of the proletariat to select the most skilful representative of the interests of the bourgeoisie, to choose the lesser evil between the civil dictator Marx and the military dictator Hindenburg."
-on-arrival: comintern_relation -= 5; rfb_strength += 10; thalmann_percent -= 0.05; pro_republic += 6 if braun_votes >= 27; nationalism -= 3 if braun_votes >= 27
+on-arrival: thalmann_campaign = 1 if not thalmann_campaign; comintern_relation -= 5; rfb_strength += 10; thalmann_percent -= 0.05; pro_republic += 6 if braun_votes >= 27; nationalism -= 3 if braun_votes >= 27
 go-to: campaign_thalmann
 
-We have defied the Comintern's order and chosen to keep Thälmann in the running. What will our campaign be?
+We have defied the Comintern's order and chosen to [? if not braun_backed : keep Thälmann in the running ?][? if braun_backed : enter Thälmann into the race. ?]. What will our campaign be?
 
 @campaign_thalmann
 
@@ -364,7 +424,7 @@ We have increased our campaigning among the unemployed.
 subtitle: The Comintern compels us - "The Communists cannot take the position that the question of monarchy or bourgeois republic is a matter of indifference to us."
 on-arrival: comintern_relation += 1; rfb_strength -= 10; left_dissent += 10; thalmann_campaign = 0; pro_republic += 6; nationalism -= 3; socialism -= 2; dropped_out = 1
 
-We have dropped out from the election, complying with the Comintern directive to do so, although upsetting the currently dominant left in the party.
+[? if not braun_backed : We have dropped out from the election?][? if braun_backed : We have stayed out of the election?], complying with the Comintern directive to do so, although upsetting the currently dominant left in the party.
 
 - @round1: Let the voting begin...
 

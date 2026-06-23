@@ -20,7 +20,7 @@ subtitle: We will address a letter to Moscow - this hinges on our relationship.
 go-to: rebuked if comintern_relation < 4 and left_dissent < 15; conceded if comintern_relation >= 4 or left_dissent >= 15
 
 @rebuked
-on-arrival: left_dissent += 10; left_strength -= 10; center_strength += 5; conciliator_strength += 5; right_dissent -= 5; comintern_relation -= 1
+on-arrival: left_dissent += 10; left_strength -= 10; center_strength += 5; conciliator_strength += 5; right_dissent -= 5; comintern_relation -= 1; maslow_rebuked = 1
 
 Our letter is not the only letter sent - Maslow sends one too from his prison cell, directly to Stalin. Both are rebuked promptly, Stalin declaring that if Zinoviev and Bukharin knew they were suspected of having sympathies for the KPD right, they would surely die of laughing. He further declared that wholesale expulsions of dissenters from a party merely proves that the leaders of the party are feared, not respected, and that the KPD's internal policy must be made more elastic.
 
@@ -35,12 +35,14 @@ Indeed so; but for Stalin, or for us? The majority opinion seems to believe the 
 At the very least, the Politburo is processing our request for the censuring; though it has been deferred to a party control commission, passing through the slogs of proceduralism rather than being taken seriously.
 
 @conceded
-on-arrival: left_strength += 5; center_dissent += 5; right_strength -= 5
+on-arrival: left_strength += 5; center_dissent += 5; right_strength -= 5;
 
 Our letter is received by Moscow, where the Politburo has begun to process our request. They seem to be taking our concerns seriously, with preliminary censures already being made against Brandler and Thalheimer.
 
 @humbug
 subtitle: We will accept the undermining.
-on-arrival: left_dissent += 5; right_strength += 10; comintern_relation += 1
+on-arrival: left_dissent += 5; right_strength += 10; comintern_relation += 1; maslow_rebuked = 1
 
 The ordeal weakens the left-wing of our party, and allows the right-wing to rebound through the intervention of the clique that hides in Moscow, tolerated in doing so by the Comintern.
+
+[? if left_dissent >= 15 : Meanwhile, even as we do not write to the Comintern officially, Maslow sends a letter from his prison cell, to which Stalin nevertheless responds, rebuking and dismissing his concerns while certifying that the KPD must become more elastic in its internal policy. ?]
