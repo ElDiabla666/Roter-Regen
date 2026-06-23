@@ -98,6 +98,11 @@ if (Q.dissent < 0) {
     Q.dissent = 0.95;
 }
 
+Q.leadership_strength = 0;
+for (var f of Q.factions) {
+    Q.leadership_strength += Q[f+'_strength'];
+}
+
 // 1. update dates
 if (Q.month_actions >= 1) {
     Q.time += 1;
@@ -299,11 +304,6 @@ if (Q.month_actions >= 1) {
         Q.unemployed_kpd -= (((100-Q.nationalism)+(Q.kpd_votes+Q.kpd2_votes))/120)/(Q.kpd_votes/(Q.kpd_votes+Q.kpd2_votes))*1.1;
         Q.unemployed_kpd2 += (((100-Q.nationalism)+(Q.kpd_votes+Q.kpd2_votes))/120)*0.9;
         // the more internationalist people are, the more they value an international comintern movement? yeah, it's a bit silly and spurious, but in the absence of a better variable to determine how popular affiliation with the comintern is, i'll use this as a stand-in
-    }
-
-    Q.leadership_strength = 0;
-    for (var f of Q.factions) {
-       Q.leadership_strength += Q[f+'_strength'];
     }
 
     ////////////////////////// annual support changes
