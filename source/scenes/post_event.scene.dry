@@ -100,7 +100,9 @@ if (Q.dissent < 0) {
 
 Q.leadership_strength = 0;
 for (var f of Q.factions) {
-    Q.leadership_strength += Q[f+'_strength'];
+    if (Q[f+'_leadership']) {
+        Q.leadership_strength += Q[f+'_strength'];
+    }
 }
 
 // 1. update dates
