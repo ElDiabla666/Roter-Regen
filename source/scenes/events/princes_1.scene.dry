@@ -64,7 +64,7 @@ Or maybe not, they still cannot agree to the full breadth of our proposal, inste
 subtitle: [? if comintern_membership : The Comintern condemns this course. ?]
 choose-if: not comintern_membership or kpd_party_leader == "Fischer" or left_strength > spd_relation
 unavailable-subtitle: Now is no time to be sectarian and isolate ourselves from the masses.
-on-arrival: comintern_relation -= 1; spd_relation -= 3; left_strength += 10; rfb_strength += 10; rfb_militancy += 0.05; center_dissent += 5; right_dissent += 5; conciliator_dissent += 5
+on-arrival: solo_referendum = 1; comintern_relation -= 1; spd_relation -= 3; left_strength += 10; rfb_strength += 10; rfb_militancy += 0.05; center_dissent += 5; right_dissent += 5; conciliator_dissent += 5
 
 We don’t need them! To hell with the Social Democrats, they’ll do nothing but dilute our initiative. Communism is our program, nothing else! Anything else is unacceptable! 
 

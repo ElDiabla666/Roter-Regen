@@ -71,7 +71,7 @@ For now, the SPD will not move against the government, because they SUCK. [? if 
 - @refuse_referendum: NOPE!
 
 @invite_referendum
-view-if: princes_initiated and not princes_time
+view-if: princes_initiated and not princes_time and not solo_referendum
 on-arrival: princes_time = time+2; spd_relation += 5; dvp_relation -= 3; old_middle_spd -= 2; new_middle_spd -= 2; marx_relation -= 5; 
 
 As they will be in opposition for the foreseeable future, they thankfully awake to their class interests and join, even if they're being lame and refusing to back our suggestion directly and asking the ADGB to mediate a bill that we can agree on. Preparations for referendum are underway.
