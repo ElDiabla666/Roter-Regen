@@ -28,7 +28,7 @@ Maslow, following Stalin's response to his letter in February, has become an adv
 - @back_thalmann: We will back Comrade Deputy Chairman Ernst Thälmann of the RFB, after all.
 
 @back_braun_for_real
-choose-if: conciliator_strength+right_strength >= (50+(left_strength*(left_dissent/100)));
+choose-if: ((conciliator_strength/2)+right_strength) >= (50+(left_strength*(left_dissent/100)));
 unavailable-subtitle: Maslow is outvoted.
 on-arrival: thalmann_campaign = 0; kpd_support_braun = 1; left_dissent += 15; center_dissent += 5; thalmann_percent = 0.4; spd_relation += 10; braun_backed = 1
 
