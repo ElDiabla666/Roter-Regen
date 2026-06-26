@@ -111,7 +111,7 @@ if (Q.braun_campaign) {
         }
     }
     if (Q.kpd_support_braun) {
-        var kpd_percent = (thalmann_percent+(Q.spd_relation/100))/2;
+        var kpd_percent = (Q.thalmann_percent+(Q.spd_relation/100))/2;
         Q.braun_votes += Q.kpd_normalized*kpd_percent;
         Q.braun_votes += Q.socialism/2500;
     }
