@@ -30,7 +30,7 @@ Maslow, following Stalin's response to his letter in February, has become an adv
 @back_braun_for_real
 choose-if: (((conciliator_strength/2)+right_strength) >= (50+(left_strength*(left_dissent/100))))
 unavailable-subtitle: Maslow is outvoted.
-on-arrival: thalmann_campaign = 0; kpd_support_braun = 1; left_dissent += 15; center_dissent += 5; thalmann_percent = 0.4; spd_relation += 10; braun_backed = 1
+on-arrival: thalmann_campaign = 0; kpd_support_braun = 1; braun_campaign = 1; workers_spd += 5; pro_republic += 3; left_dissent += 15; center_dissent += 5; thalmann_percent = 0.4; spd_relation += 10; braun_backed = 1
 
 Surprisingly, his proposal is pushed through! The candidacy of Thälmann is overridden as we reach out to the SPD for an endorsement to Braun instead. Albeit reluctantly and with surprise, our overtures are accepted.
 
