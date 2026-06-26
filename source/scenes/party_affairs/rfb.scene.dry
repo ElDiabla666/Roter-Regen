@@ -22,7 +22,7 @@ We have several options.
 - @priorities: Let's change the priorities of the Roter Frontkämpferbund.
 - @drive: Fund a large-scale extraordinary recruitment drive for the RFB.
 - @funding: Let's change the RFB's funding.
-- @women_rb
+- @women_rb: Let's support the RFMB.
 - @pay: Fund the RFB in accordance to what it has been allocated.
 - @default: We cannot pay the RFB at this moment.
 - @cancel_advisor_action
@@ -131,18 +131,20 @@ on-arrival: defaults += 1; rfb_strength *= (0.9+(recruitment_priority/10)); rfb_
 The RFB will go without funding this cycle. This is not good.
 
 @women_rb
-title: Allow women to join the RFB.
+title: Integrate the Roter Frauen und Mädchenbund and the RFB.
 subtitle: -1 resources - This might cause a backlash from reactionary members.
 choose-if: resources > 0
 view-if: womens_rights >= 2
-on-arrival: resources -= 1; rfb_militancy *= 0.85; rfb_strength += 400; women_in_rb = 1; rfb_militancy += 0.05 if repealed_175; rfb_militancy += 0.04 if trans_rights; rfb_militancy += 0.05 if reformed_183;
+on-arrival: resources -= 1; rfb_militancy *= 0.85; rfb_strength += 400; women_in_rb = 1; rfb_militancy += 0.05 if repealed_175; rfb_militancy += 0.04 if trans_rights; rfb_militancy += 0.05 if reformed_183; 
 go-to: homosexual if trans_rights or repealed_175 or reformed_183; options_rfb
 max-visits: 1
 achievement: women_reichsbanner
 
-The suggestion to allow women into the RFB is a controversial but not outlandish idea. These are exceptional times and we have already made great strides towards Womans Emancipation besides. Mixed and specialised units for women have been established, woman cadres have also became formally organised and trained like never before. [? if homosexual_rights > 0: and even some covert units for transsexuals and homosexuals ?].
+The suggestion to integrate the Roter Frauen und Mädchenbund and RFB is a controversial but not outlandish idea. The RFMB is a militant organisation in its own right and this has been a staple piece of women’s organising and these are exceptional times. Mixed and specialised units for women have been established, woman cadres have also became formally organised and trained like never before. [? if homosexual_rights > 0: and even some covert units for transsexuals and homosexuals ?].
 
-After allowing women to join, the number of small comrades who leave is more than balanced out by the number of radicalised women and others who join. However, many of our departed members were veterans, and many of the new members have no experience with military-style training.
+After allowing women to join, the number of small comrades who leave is more than balanced out by the number of radicalised women and others who join. However, many of our departed members were veterans, and the new members have no experience with military-style training.
+
+This’ll have a knock on effect of improving our standing amongst women and strengthening the RFMB, helping them organise and radicalise women.
 
 @homosexual
 achievement: anders_als_die_andern
