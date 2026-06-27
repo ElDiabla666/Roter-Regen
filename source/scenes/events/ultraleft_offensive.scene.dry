@@ -25,7 +25,7 @@ With this shift back to the left by the leadership, in defiance of the Comintern
 
 @comintern_line
 subtitle: The error of Brandlerism was its application in a no longer existing revolutionary situation!
-on-arrival: left_strength -= 20; center_strength += 20; left_dissent += 10; center_leadership = 1; right_strength += 5; comintern_relation += 1
+on-arrival: left_strength -= 20; center_strength += 10; left_dissent += 10; center_leadership = 1; right_strength += 5; conciliator_strength += 5; comintern_relation += 1
 
 The majority rebukes and counterattacks the ultraleft offensive against the party leadership, instead charging the ultraleft with leading the party astray by failing to take into account the monarchist danger, failing to exercise sufficient pressure for trade union unity, and failing to adopt sufficiently flexible tactics. Included in the resolution passed, which is passed with the opposition only of the ultraleft, which by this stage has entered open rebellion, is a rehabilitation of Brandlerism, by charging that the only mistake of the tactics is that they were applied in a revolutionary context, which no longer exists due to the stabilization of bourgeois rule.
 
