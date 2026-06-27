@@ -175,7 +175,7 @@ if (Q.marx_campaign) {
         Q.marx_votes += Q.debug_marx_bonus;
     }
     if (!Q.thalmann_campaign) {
-        Q.marx_votes += Q.kpd_normalized-(Q.kpd_normalized*(1-(0.25*(Q.socialism/100))));
+        Q.marx_votes += Q.kpd_normalized-(Q.kpd_normalized*(1-((1-(left_strength/100))*(Q.socialism/100))));
     }
 }
 if (Q.jarres_campaign) {
