@@ -73,6 +73,7 @@ The resolutions passed by the conference lambast and assault the right on every 
 on-arrival: {!
 Q.leadership_power = Math.max(0, Math.min(60, 3 * (Q.leadership_strength - 40)));
 !}
+
 Confidence in the party leadership: [+ leadership_power : strength +]
 
 - @reelected: The party's confidence in the leadership is reaffirmed.
