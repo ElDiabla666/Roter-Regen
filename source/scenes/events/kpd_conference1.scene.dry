@@ -4,7 +4,7 @@ new-page: true
 max-visits: 1
 tags: event
 view-if: year == 1925 and month >= 7
-on-arrival: ultraleft_threat = 1 if ultraleft_offensive_seen or (comintern_relation < 0 and left_strength >= 40); left_strength -= 5 if ultraleft_threat; right_strength += 5 if ultraleft_threat; left_dissent += 5 if ultraleft_threat
+on-arrival: ultraleft_threat = 1 if ultraleft_offensive_seen or (comintern_relation < 0 and left_strength >= 40); left_strength -= 5 if ultraleft_threat; right_strength += 5 if ultraleft_threat; left_dissent += 5 if ultraleft_threat; leadership_strength -= 5 if ultraleft_threat and left_leadership
 
 = Party Conference
 
