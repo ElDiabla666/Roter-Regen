@@ -278,7 +278,7 @@ on-arrival: former_president = "Hindenburg"; president = "Hindenburg"; pro_repub
 
 The Junker Paul von Hindenburg has won the election with the backing of all the reactionary right organized under the **Reichsblock** behind him. Though many in our party anticipate an immediate restructuring of Germany along authoritarian and aristocratic lines, he seems, for now, to be following the constitution. Regardless, this signals a dark turn for not only the Republic but also for the German left. Who knows what Hindenburg may do in power?
 
-Most see this as a symbol of the completion of the victory of the bourgeoisie, which has gradually regained power since the revolution. [? if comintern_relation < 2 : Die Rote Fahne has published an appeal from the Executive Committee of the Comintern criticizing the decision of our party to let Thälmann run in the second round. This has weakened the leadership of our party. ?]
+Most see this as a symbol of the completion of the victory of the bourgeoisie, which has gradually regained power since the revolution. [? if comintern_relation < 2 and not dropped_out : Die Rote Fahne has published an appeal from the Executive Committee of the Comintern criticizing the decision of our party to let Thälmann run in the second round. This has weakened the leadership of our party. ?]
 
 @marx_wins
 on-arrival: former_president = "Marx"; president = "Marx"; marx_relation += 10; pro_republic += 5; nationalism -= 5; z_relation += 5; ddp_relation += 5; right_strength += 5; jarres_campaign = 0; marx_campaign = 0; held_campaign = 0; thalmann_campaign = 0; ludendorff_campaign = 0; hellpach_campaign = 0; gessler_campaign = 0; braun_campaign = 0; z_support_braun = 0; ddp_support_braun = 0; bvp_support_hindenburg = 0
