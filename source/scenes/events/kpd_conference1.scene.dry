@@ -1,0 +1,129 @@
+title: Party Conference!
+subtitle: It is time for our party conference.
+new-page: true
+max-visits: 1
+tags: event
+view-if: year == 1925 and month >= 7
+on-arrival: ultraleft_threat = 1 if ultraleft_offensive_seen or (comintern_relation < 0 and left_strength >= 40); left_strength -= 5 if ultraleft_threat; right_strength += 5 if ultraleft_threat; left_dissent += 5 if ultraleft_threat
+
+= Party Conference
+
+The time has come for our party's conference, to be held in Berlin. We have received an advance letter from Zinoviev on behalf of the Comintern, declaring that the present period is one of relative stabilization with the Dawes plan giving the German bourgeoisie breathing space, and going on to declare trade unions our party's Achilles' heel, declaring that 75% of our work should be focused on unions. 
+
+[? if ultraleft_threat : While Brandlerism is attacked as a remaining social-democratic tendency within the communist camp, a greater emphasis is placed on the danger of the ultraleft, identified around Rosenberg, Scholem, Katz and Korsch, [? if left_unified : and even Fischer and Maslow, ?] to the extent that we have been invited to draw into our work the best elements of the party not belonging to the left, a direct attack on the left and reconciliation with the right. This has been echoed by several senior members of the KPD around Ernst Meyer, who have addressed a further letter with several theses and essays to the congress, alleging that the stabilization of Germany through the Dawes plan necessitates new approaches and that the Zentrale has been acting as a prisoner of the ultraleft. ?]
+
+## todo: there should be an alternate to the ultraleft threat being identified; would the main focus still be on the right if the left was neither dominant or threatening to split?
+
+- @congress_begins1: The congress begins.
+- @congress_begins2: The congress begins.
+
+@congress_begins
+view-if: ultraleft_threat
+
+One of our Italian comrades speaks first, attacking Bordiga and by proxy the ultraleft in our own party. He is followed by Manuilsky, a representative of the Russian Communists who spoke at our previous congress, although as an official representative of the Comintern where he now speaks merely as a fellow partisan. The authority he wields, though, is nevertheless apparent, with the Russian party dominant in international communism. Manuilsky declares that "Everything which under present conditions serves to ward off Chamberlain's offensive against the proletarian revolution is a revolutionary, a communist, a proletarian policy", defending the 'new peasant policy' of the USSR and attacking the ultraleft for its criticism of the USSR's lines as vested in the self-preservation of Russia rather than genuine proletarian interests.
+
+Moving on to the trade union question, he continues lambasting the ultraleft, even attacking Rosenberg and Katz by name, as well as Bordiga as an example of a left-sectarian. He declares that, rather than the ultraleft idea that the KPD has gone too far right in coalition policy, it has not even succeeded in building a united front. Last but not least, he denounces the ultraleft proposal that only those who had opposed Brandler be able to take leadership, before leaving for fear of arrest by German authorities as he was in the country illegally and under a false name. 
+
+Ernst Meyer speaks next as the chief spokesperson of the whole party right, accusing the left of rejecting the united front altogether. The left around Rosenberg and Scholem manage the best counters, repelled only by [? if not left_unified and ultraleft_offensive_seen : Fischer and Thälmann, who continue the party leadership's shift to the right?][? if left_unified or not ultraleft_offensive_seen : the most experienced of party rightists, as well as spokesmen from the center?].
+
+Finally, after much bickering, the conference begins to vote on resolutions.
+
+- @anti_left: The conference must take a firm line against the ultraleft.
+- @compromise_leftward: The conference must reach a compromise with the left.
+- @compromise_rightward: The conference must reach a compromise with the right.
+- @anti_right: The conference must take a firm line against the right.
+
+@anti_left
+view-if: center_leadership
+subtitle: The Comintern would like to see this.
+on-arrival: left_split = 1; leadership_strength -= left_strength; conciliator_strength += (left_strength*0.5); left_leadership = 0; left_strength *= 0.5; workers_kpd -= 5; unemployed_kpd -= 5; spd_relation += 5; comintern_relation += 2
+
+The resolutions passed by the conference lambast and assault the left on every point, proving a great and outsized victory for the party right. The result has left Fischer and Maslow in a precarious position, as their shift right, while temporarily neutralizing the right's opposition towards them, has alienated the left from them far more than it has won them favor in the party right.
+
+- @leadership: Now onto the question of party leadership.
+
+@compromise_leftward
+view-if: center_leadership
+subtitle: Perhaps it is needed to prevent a split?
+on-arrival: left_dissent -= 5; left_strength += 5; workers_kpd -= 2; unemployed_kpd -= 2; comintern_relation -= 1; right_dissent += 5; conciliator_dissent += 5
+
+By weariness and exhaustion more than genuine agreement, a compromise is eventually reached with the left, marking a partial reversal of the Fischer-Maslow course towards the right, an attempt by them to balance the party's factions and to preserve this balance. Maslow furthers this shift back to the left, releasing a book from his prison cell which criticizes Lenin's adoption of the united front strategy in 1921. Hopefully this has no wider consequences.
+
+- @leadership: Now onto the question of party leadership.
+
+@compromise_rightward
+view-if: not center_leadership
+subtitle: Perhaps it is needed to prevent a split?
+on-arrival: right_dissent -= 5; conciliator_strength += 5; workers_kpd -= 2; unemployed_kpd -= 2; left_dissent += 5; comintern_relation -= 1
+
+By weariness and exhaustion more than genuine agreement, a compromise is eventually reached with the right, marking a partial reversal of the Fischer-Maslow course towards the left, an attempt by them to balance the party's factions and to preserve this balance. In spite of this compromise with the right, though, Maslow still releases a book from his prison cell which criticizes Lenin's adoption of the united front strategy in 1921. Hopefully this has no wider consequences.
+
+- @leadership: Now onto the question of party leadership.
+
+@anti_right
+view-if: not center_leadership
+subtitle: The Comintern would probably torture us to death.
+on-arrival: workers_kpd -= 5; unemployed_kpd -= 5; spd_relation -= 10; comintern_relation -= 2
+
+The resolutions passed by the conference lambast and assault the right on every point, proving a great and outsized victory for the party left. The result has left Fischer and Maslow in a strong position, so long as they retain the confidence of the ultraleft, that is. [? if ultraleft_offensive_seen : Whether or not they can retain the confidence of the ultraleft is questionable, given their unreliability. ?]
+
+- @leadership: Now onto the question of party leadership.
+
+@leadership
+on-arrival: {!
+Q.leadership_power = Math.max(0, Math.min(100, 5 * (Q.leadership_strength - 40)));
+!}
+
+Confidence in the party leadership: [+ leadership_power : strength +]
+
+- @reelected: The party's confidence in the leadership is reaffirmed.
+- @deposed: The party's confidence in the leadership has been revoked.
+- @deposed_2: The party's confidence in the leadership has been revoked.
+
+@reelected
+view-if: leadership_strength >= 50 and not (left_strength >= 60 and ultraleft_offensive_seen)
+
+Fischer, Maslow, and Thälmann will remain the leading figures of the party. This disappoints many who were hoping for a change in leadership.
+
+@deposed_2
+view-if: leadership_strength >= 50 and (left_strength >= 60 and ultraleft_offensive_seen)
+on-arrival: comintern_relation -= 3; spd_relation -= 10; workers_kpd -= 6; unemployed_kpd -= 6; rfb_strength -= 20; rfb_militancy += 0.02
+
+Fischer, Maslow, and Thälmann have lost the confidence of the party, but this rebellion comes not from the right, but from their left, as Rosenberg, Scholem, Katz, and Korsch take the initiative and seize leadership.
+
+WIP.
+
+@deposed
+view-if: leadership_strength < 50
+on-arrival: left_leadership = 0; center_leadership = 0
+
+The leadership around Fischer and Maslow has lost the confidence of the party. The new leading figures of the party will be...
+
+- @middle_group: The "middle group", around the party center and center-right.
+- @right: The right, and center-right.
+- @antileft: A general slate of all forces to the right of the ultraleft combined.
+
+@middle_group
+on-arrival: center_leadership = 1; conciliator_leadership = 1; comintern_relation += 2; spd_relation += 3
+unavailable-subtitle: This does not have the support needed.
+choose-if: center_strength+conciliator_strength >= 50
+
+Placeholder.
+
+@right
+on-arrival: conciliator_leadership = 1; right_leadership = 1; comintern_relation += 1; spd_relation += 5
+unavailable-subtitle: This does not have the support needed.
+choose-if: right_strength+conciliator_strength >= 50
+
+Placeholder.
+
+@antileft
+on-arrival: right_leadership = 1; center_leadership = 1; conciliator_leadership = 1; comintern_relation += 1; spd_relation += 4
+
+Placeholder.
+
+@congress_begins2
+
+Everybody gets married to each other in one big poly marriage, and global communism is accomplished.
+
+- @game_over: We win! Game over.

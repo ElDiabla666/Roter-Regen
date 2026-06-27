@@ -1,0 +1,33 @@
+title: Meeting of the Central Committee
+subtitle: The ultraleft has turned against Fischer and Maslow.
+new-page: true
+max-visits: 1
+tags: event
+view-if: year == 1925 and month >= 5 and (((left_dissent/(left_strength/100)) >= 50) or braun_considered)
+on-arrival: left_strength -= 5; left_dissent += 5; ultraleft_offensive_seen = 1
+
+= Party Conference
+
+Following the presidential elections, a meeting of the central committee has been called, during which the ultraleft around Rosenberg, Scholem and Katz have charged the present party leadership with failing to attack the bourgeoisie and resigning ourselves to wrangling with the Social Democrats, pointing to a recent proposal in the Prussian Landtag by the KPD delegation to the Social Democrats, wherein our deputies offered to work with the Social Democrats on legislation[? if braun_considered:, as well as our proposal in the presidential elections to back Braun. ?]. This marks a decisive break within the left, a break which risks rendering Fischer and Maslow factionally homeless through their perceived opportunism and unreliability.
+
+- @ultraleft: We must reconcile with the ultraleft!
+- @comintern_line: It is the ultraleft which has led us astray!
+
+@ultraleft
+subtitle: We have been failing to sufficiently assault the bourgeoisie!
+choose-if: ((not braun_considered and (spd_relation < (60-left_dissent))) and (leadership_strength >= 50))
+unavailable-subtitle: [? if leadership_strength >= 50 : The ultraleft's breaks with the leadership's policies are too fundamental. ?][? if leadership_strength < 50 : There is an anti-leftist majority in the Central Committee. ?]
+on-arrival: left_strength += 10; left_dissent -= 10; center_dissent += 5; conciliator_dissent += 10; right_dissent += 15; comintern_relation -= 2; left_unified = 1; conciliator_strength += (2*comintern_funding)
+
+Surprisingly, Fischer and Maslow echo the offensive of the ultraleft against the party right in the meeting of the Central Committee, breaking from the views of the Comintern on the matter but affirming Fischer and Maslow's roots as leaders from the left, something they hope will allow them to stay in their positions. The resolution put forward passes narrowly, voted against by the right and center wings and condemned by the Comintern. 
+
+With this shift back to the left by the leadership, in defiance of the Comintern, the party appears to be moving towards a split...
+
+@comintern_line
+subtitle: The error of Brandlerism was its application in a no longer existing revolutionary situation!
+on-arrival: left_strength -= 20; center_strength += 20; left_dissent += 10; center_leadership = 1; right_strength += 5; comintern_relation += 1
+
+The majority rebukes and counterattacks the ultraleft offensive against the party leadership, instead charging the ultraleft with leading the party astray by failing to take into account the monarchist danger, failing to exercise sufficient pressure for trade union unity, and failing to adopt sufficiently flexible tactics. Included in the resolution passed, which is passed with the opposition only of the ultraleft, which by this stage has entered open rebellion, is a rehabilitation of Brandlerism, by charging that the only mistake of the tactics is that they were applied in a revolutionary context, which no longer exists due to the stabilization of bourgeois rule.
+
+This effectively marks a shift right in the leadership of the party, and an adjustment in compliance of Comintern directives after previous unreliability. The Comintern has rewarded this compliance by endorsing the resolution and condemning the false tactics of the minority, while simultaneously making clear that the struggle against the ultraleft must be carried forth through open debate and discussion, rather than disciplinary measures.
+
