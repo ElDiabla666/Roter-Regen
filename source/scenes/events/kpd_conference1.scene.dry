@@ -71,7 +71,7 @@ The resolutions passed by the conference lambast and assault the right on every 
 
 @leadership
 on-arrival: {!
-Q.leadership_power = Math.max(0, Math.min(100, 5 * (Q.leadership_strength - 40)));
+Q.leadership_power = Math.max(0, Math.min(60, 3 * (Q.leadership_strength - 40)));
 !}
 
 Confidence in the party leadership: [+ leadership_power : strength +]
