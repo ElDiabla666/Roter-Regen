@@ -73,7 +73,6 @@ The resolutions passed by the conference lambast and assault the right on every 
 on-arrival: {!
 Q.leadership_power = Math.max(0, Math.min(60, 3 * (Q.leadership_strength - 40)));
 !}
-
 Confidence in the party leadership: [+ leadership_power : strength +]
 
 - @reelected: The party's confidence in the leadership is reaffirmed.
@@ -107,20 +106,29 @@ The leadership around Fischer and Maslow has lost the confidence of the party. T
 on-arrival: center_leadership = 1; conciliator_leadership = 1; comintern_relation += 2; spd_relation += 3
 unavailable-subtitle: This does not have the support needed.
 choose-if: center_strength+conciliator_strength >= 50
+is-hand: true
 
 Placeholder.
+
+- @shuffle_leadership: Shuffle leadership.
 
 @right
 on-arrival: conciliator_leadership = 1; right_leadership = 1; comintern_relation += 1; spd_relation += 5
 unavailable-subtitle: This does not have the support needed.
 choose-if: right_strength+conciliator_strength >= 50
+is-hand: true
 
 Placeholder.
+
+- @shuffle_leadership: Shuffle leadership.
 
 @antileft
 on-arrival: right_leadership = 1; center_leadership = 1; conciliator_leadership = 1; comintern_relation += 1; spd_relation += 4
+is-hand: true
 
 Placeholder.
+
+- @shuffle_leadership: Shuffle leadership.
 
 @congress_begins2
 view-if: not ultraleft_threat
