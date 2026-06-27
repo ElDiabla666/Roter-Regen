@@ -36,7 +36,7 @@ Finally, after much bickering, the conference begins to vote on resolutions.
 @anti_left
 view-if: center_leadership
 subtitle: The Comintern would like to see this.
-on-arrival: left_split = 1; leadership_strength -= left_strength; conciliator_strength += (left_strength*0.5); left_leadership = 0; left_strength *= 0.5; workers_kpd -= 5; unemployed_kpd -= 5; spd_relation += 5; comintern_relation += 2
+on-arrival: left_split = 1; leadership_strength -= left_strength; conciliator_strength += left_strength; left_leadership = 0; left_strength = 0; workers_kpd -= 5; unemployed_kpd -= 5; spd_relation += 5; comintern_relation += 2
 
 The resolutions passed by the conference lambast and assault the left on every point, proving a great and outsized victory for the party right. The result has left Fischer and Maslow in a precarious position, as their shift right, while temporarily neutralizing the right's opposition towards them, has alienated the left from them far more than it has won them favor in the party right.
 
