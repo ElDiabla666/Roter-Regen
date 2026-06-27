@@ -123,6 +123,7 @@ on-arrival: right_leadership = 1; center_leadership = 1; conciliator_leadership 
 Placeholder.
 
 @congress_begins2
+view-if: not ultraleft_threat
 
 Everybody gets married to each other in one big poly marriage, and global communism is accomplished.
 
