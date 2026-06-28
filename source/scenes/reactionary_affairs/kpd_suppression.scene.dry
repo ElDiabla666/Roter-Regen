@@ -1,0 +1,31 @@
+title: Suppression of our Party
+new-page: true
+is-card: true
+on-arrival: workers_kpd -= 1
+card-image: img/hindenburg_election.jpg
+tags: reactionary_affairs
+
+= Suppression of our Party
+
+We have recently been confronted with suppression from state authorities across various German states, including bans on some of our newspapers, police shutdowns of our rallies and headquarterses, and other such disruptive measures making it harder for us to organize.
+
+- @appeal_court: Let's appeal to a court.
+- @rfb: We'll use the RFB to defend ourselves!
+- @cry: We can do nothing.
+
+@appeal_court
+choose-if: judicial_reform >= 3
+unavailable-subtitle: The courts love killing us and wish they were invited to join in the suppression if anything.
+
+Wow. Nice job.
+
+@rfb
+choose-if: rfb_strength*rfb_militancy >= 50
+unavailable-subtitle: It's too weak.
+
+Wow. Nice job.
+
+@cry
+on-arrival: workers_kpd -= 3; unemployed_kpd -= 3;
+
+Shucks buster.

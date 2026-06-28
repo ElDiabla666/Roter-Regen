@@ -128,6 +128,8 @@ Q.center_leadership = 0;
 Q.conciliator_leadership = 0;
 Q.right_leadership = 0;
 
+Q.reactionary_countdown = 10;
+
 // each faction has a strength between 1-100
 // the factions which are part of the leadership contribute their strength to the strength of the party leadership
 

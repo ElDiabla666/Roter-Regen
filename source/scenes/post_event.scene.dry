@@ -728,6 +728,15 @@ if (Q.month_actions >= 1) {
             Q.catholics_spd -= 6/12;
         }
     }
+
+    if (!Q.reactionary_turn) {
+        Q.reactionary_countdown -= 1;
+        if (!Q.reactionary_countdown) {
+            Q.reactionary_countdown = 12;
+            Q.reactionary_turn = 1;
+        }
+    }
+
 }
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
@@ -752,7 +761,7 @@ if (this.ui && this.ui.show_portraits) {
 if (typeof window !== "undefined" && window.generateBar) {
 }
 !}
-go-to: events_choice if has_event = 1; main if has_event = 0 and difficulty >= 0; main.main_easy if has_event = 0 and difficulty < 0
+go-to: events_choice if has_event = 1; main if has_event = 0 and difficulty >= 0 and not reactionary_turn; main.main_easy if has_event = 0 and difficulty < 0 and not reactionary_turn; reactionary_main if has_event = 0 and reactionary_turn
 
 = [+ month : month +] [+ year +]
 

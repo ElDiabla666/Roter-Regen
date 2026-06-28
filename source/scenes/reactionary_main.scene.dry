@@ -1,0 +1,28 @@
+title: Next month
+set-bg: img/hindenburg_head.jpg
+is-hand: true
+on-arrival: {!
+if (Q.advisor_action_timer <= 0) {
+    Q.pinnedCardsDescription = 'Advisors - an action is available.';
+} else if (Q.advisor_action_timer == 1) {
+    Q.pinnedCardsDescription = 'Advisors - next action available in 1 month.';
+} else {
+    Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
+}
+!}
+max-cards: 1
+
+#Here, the main deck will be displayed. Clicking on the deck draws a card into your hand. Clicking on a card activates that card.
+
+The reactionaries are constantly on the move. They are not passive; they will respond to our actions in the means they view as appropriate to preserve the bourgeois class dictatorship.
+
+- @reaction
+
+@reaction
+title: Reactionary Affairs
+card-image: img/stalhelm.jpg
+is-deck: true
+view-if: reactionary_turn
+on-arrival: reactionary_turn = 0
+
+- #reactionary_affairs
