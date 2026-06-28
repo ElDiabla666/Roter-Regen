@@ -4,7 +4,7 @@ is-card: true
 on-arrival: workers_kpd -= 1
 card-image: img/hindenburg_election.jpg
 tags: reactionary_affairs
-on-departure: month_actions += 1
+on-departure: reactionary_turn = 0
 
 = Suppression of our Party
 
