@@ -1,5 +1,5 @@
 title: Next month
-set-bg: img/hindenburg_head.jpg
+set-bg: img/Hindenburg_head.jpg
 is-hand: true
 on-arrival: {!
 if (Q.advisor_action_timer <= 0) {
@@ -20,7 +20,7 @@ The reactionaries are constantly on the move. They are not passive; they will re
 
 @reaction
 title: Reactionary Affairs
-card-image: img/stalhelm.jpg
+card-image: img/stahlhelm.jpg
 is-deck: true
 view-if: reactionary_turn
 on-arrival: reactionary_turn = 0
