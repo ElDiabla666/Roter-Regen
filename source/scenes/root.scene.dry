@@ -6,7 +6,8 @@ go-to: post_event if started = 1; start_menu if started = 0
 new-page: true
 go-to: start_menu_2
 
-= Social Democracy: An Alternate History
+= ROTERREGEN 
+= Kommunisten und Antifaschisten!
 
 @start_menu_2
 
@@ -154,7 +155,6 @@ Q.prussian_government = "SPD";
 // Reichsbanner, stahlhelm, SA, rotfrontkämpferbund
 Q.rb_strength = 2000;
 Q.rb_militancy = 0.06;
-Q.women_in_rb = 0;
 Q.rb_banned = 0;
 Q.sh_strength = 300;
 // todo: stalhelm grows too fast in base game...
@@ -169,19 +169,22 @@ Q.rfb_strength = 50;
 Q.rfb_militancy = 0.5;
 Q.rfb_banned = 0;
 Q.rfb_banned_prussia = 0;
+Q.women_in_rfb = 0;
 
 Q.interior_police_strength = 50;
 Q.interior_police_militancy = 1;
-Q.interior_police_loyalty = 0.45;
+Q.interior_police_loyalty = 0;
 
 Q.prussian_police_strength = 90;
 Q.prussian_police_militancy = 1;
-Q.prussian_police_loyalty = 0.5;
+Q.prussian_police_loyalty = 0;
+//lolnooneisbeingloyaltoyoubesoforrealrn
 
 // strength includes actual military and de facto reserves?
 Q.reichswehr_strength = 100;
 Q.reichswehr_militancy = 5;
-Q.reichswehr_loyalty = 0.2;
+Q.reichswehr_loyalty = 0;
+//theywantyoukilledandraped
 
 // The state of the country
 
@@ -579,7 +582,7 @@ Q.sh_ban_timer = 0;
 Q.kpd_ultimatum_timer = 0;
 Q.march_on_berlin_timer = 0;
 
-// all the initial advisors are centrists.
+// fix this so it says maslow and fischer and thalmann.
 Q.wels_advisor = 1; // Otto Wels
 Q.muller_advisor = 1; // Hermann Müller
 Q.muller_dead = 0;
@@ -588,14 +591,14 @@ Q.crispien_advisor = 0; // Arthur Crispien
 Q.hilferding_advisor = 1; // Rudolf Hilferding
 
 // left advisors
-Q.sender_advisor = 0; // Toni Sender
-Q.levi_advisor = 0; // Paul Levi
+Q.fischer_advisor = 0; // fishy fischer
+Q.maslow_advisor = 0; // maddy maslow
 Q.levi_dead = 0;
 Q.rosenfeld_advisor = 0; // Kurt Rosenfeld
 Q.seydewitz_advisor = 0; // Max Seydewitz
 
 // centrist alternate advisors
-Q.pfulf_advisor = 0; // Antonie Pfülf
+Q.thalmann = 0; // Antonie Pfülf
 Q.breitscheid_advisor = 0; // Rudolf Breitscheid
 
 // Reformist advisors
