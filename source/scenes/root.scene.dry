@@ -585,7 +585,6 @@ Q.sh_ban_timer = 0;
 Q.kpd_ultimatum_timer = 0;
 Q.march_on_berlin_timer = 0;
 
-// fix this so it says maslow and fischer and thalmann.
 Q.maslow_advisor = 1; // maddy maslow
 Q.thalmann_advisor = 1; // teddy thalmann
 Q.fischer_advisor = 1; // fishy fischer
