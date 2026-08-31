@@ -33,14 +33,14 @@ go-to: root
 tags: remove_advisor
 
 
-@remove_hilferding
-title: Remove Hilferding
-view-if: hilferding_advisor = 1
-on-arrival: hilferding_advisor = 0; center_dissent += 5; n_advisors -= 1
+@remove_thalmann
+title: Remove Thalmann
+view-if: thalmann_advisor = 1
+on-arrival: thalmann_advisor = 0; center_dissent += 5; n_advisors -= 1
 tags: remove_advisor
 go-to: rm_main
 
-Hilferding has been removed as an advisor. The Centrist faction disapproves.
+Ernst Thalmann has been removed as an advisor. The Centre, and the Comintern, disapprove.
 
 @remove_wels
 title: Remove Wels
@@ -151,23 +151,23 @@ Woytinsky has been removed as an advisor. The Labor faction disapproves.
 
 # left
 
-@remove_levi
-title: Remove Levi
-view-if: levi_advisor = 1
+@remove_fischer
+title: Remove Fischer
+view-if: fischer_advisor = 1
 tags: remove_advisor
-on-arrival: levi_advisor = 0; left_dissent += 5; n_advisors -= 1
+on-arrival: fischer_avisor = 0; left_dissent += 5; n_advisors -= 1
 go-to: rm_main
 
-Levi has been removed as an advisor. The Leftist faction disapproves.
+Fischer has been removed as an advisor. The Left faction disapproves.
 
-@remove_sender
-title: Remove Sender
-view-if: sender_advisor = 1
+@remove_maslow
+title: Remove Arkadi Maslow
+view-if: maslow_advisor = 1
 tags: remove_advisor
-on-arrival: sender_advisor = 0; left_dissent += 3; n_advisors -= 1
+on-arrival: maslow_advisor = 0; left_dissent += 3; n_advisors -= 1
 go-to: rm_main
 
-Sender has been removed as an advisor. The Leftist faction disapproves.
+Arkadi Maslow has been removed as an advisor. The Left faction disapproves.
 
 @remove_rosenfeld
 title: Remove Rosenfeld
