@@ -2,8 +2,8 @@ title: Ruth Fischer
 is-pinned-card: true
 tags: advisor, centrist
 card-image: img/portraits/RuthFischer.png
-view-if: fischer_advisor = 1
 new-page: true
+view-if: fischer_advisor = 1
 #face-image: img/portraits/RuthFischer.png
 
 = Ruth Fischer
