@@ -586,22 +586,16 @@ Q.kpd_ultimatum_timer = 0;
 Q.march_on_berlin_timer = 0;
 
 // fix this so it says maslow and fischer and thalmann.
-Q.maslow_advisor = 1; // 
-Q.thalmann_advisor = 1; // Hermann Müller
-Q.muller_dead = 0;
-// okay I know Arthur Crispien was a leader irl but i couldn't find much interesting about him...
-Q.crispien_advisor = 0; // Arthur Crispien
-Q.fischer_advisor = 1; // Rudolf Hilferding
+Q.maslow_advisor = 1; // maddy maslow
+Q.thalmann_advisor = 1; // teddy thalmann
+Q.fischer_advisor = 1; // fishy fischer
 
 // left advisors
-Q.fischer_advisor = 0; // fishy fischer
-Q.maslow_advisor = 0; // maddy maslow
 Q.levi_dead = 0;
 Q.rosenfeld_advisor = 0; // Kurt Rosenfeld
 Q.seydewitz_advisor = 0; // Max Seydewitz
 
 // centrist alternate advisors
-Q.thalmann = 0; // Antonie Pfülf
 Q.breitscheid_advisor = 0; // Rudolf Breitscheid
 
 // Reformist advisors
