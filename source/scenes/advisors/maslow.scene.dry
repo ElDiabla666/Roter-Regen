@@ -2,7 +2,7 @@ title: Arkadi Maslow
 is-pinned-card: true
 tags: advisor, centrist
 card-image: img/portraits/ArkadiMaslow.jpg
-view-if: wels_advisor = 1
+view-if: maslow_advisor = 1
 new-page: true
 
 = Arkadi Maslow
