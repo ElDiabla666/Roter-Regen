@@ -732,7 +732,7 @@ Q.other_wl = 24;
 set-bg: img/map_2.jpg
 new-page: true
 
-> *"The tide of events mount into the heavens – we are accustomed to being catapulted down from the peak into the depths. But our ship continues on its straight course proudly sailing to its goal. And whether we will still be alive when it is reached – our programme will live; it will rule the world of humanity redeemed. In spite of everything!"*
+> *"The tide of events mount into the heavens – we are accustomed to being catapulted down from the peak into the depths. But our ship continues on its straight course proudly sailing to its goal. And whether we will still be alive when it is reached – our <span style="color: #B00C23;">programme</span> will live; it will rule the world of humanity redeemed. In spite of everything!"*
 
  - *Karl Liebknecht*, **15 January 1919**
 
