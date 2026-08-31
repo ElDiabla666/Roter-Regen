@@ -6,7 +6,8 @@ go-to: post_event if started = 1; start_menu if started = 0
 new-page: true
 go-to: start_menu_2
 
-= <span style="color: #B00C23;">**ROTERREGEN**</span> 
+= <span style="color: #B00C23;">**ROTERREGEN**</span>
+=
 = <span style="color: #B00C23;">**KOMMUNISTEN**</span> und <span style="color: #B00C23;">**Anti**</span><span style="color: #964b00;">**faschisten!**</span>
 
 @start_menu_2
